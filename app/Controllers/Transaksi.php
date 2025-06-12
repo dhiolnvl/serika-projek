@@ -29,7 +29,8 @@ class Transaksi extends BaseController
              pemesanan_detail.harga
          ) SEPARATOR "|") AS detail_items'
             )
-            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p');
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->whereNotIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
         // Filter jika ada input bulan
         if (!empty($bulan)) {
@@ -46,6 +47,7 @@ class Transaksi extends BaseController
 
         return view('admin/tables/dataTransaksi', $data);
     }
+
 
 
     public function editTransaksi($id_p)
@@ -117,21 +119,24 @@ class Transaksi extends BaseController
         $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
-             pemesanan.id_u,
-             pemesanan.nama,
-             pemesanan.bukti_pembayaran,
-             pemesanan_detail.status,
-             SUM(pemesanan_detail.harga) as total_harga,
-             GROUP_CONCAT(CONCAT(
-                 pemesanan_detail.jenis, " - ",
-                 pemesanan_detail.model, " - ",
-                 pemesanan_detail.ukuran, " - ",
-                 pemesanan_detail.lengan, " - Rp ",
-                 pemesanan_detail.harga
-             ) SEPARATOR "|") AS detail_items'
+         pemesanan.id_u,
+         pemesanan.nama,
+         users.no_hp,
+         pemesanan.bukti_pembayaran,
+         pemesanan_detail.status,
+         SUM(pemesanan_detail.harga) as total_harga,
+         GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ",
+             pemesanan_detail.model, " - ",
+             pemesanan_detail.ukuran, " - ",
+             pemesanan_detail.lengan, " - Rp ",
+             pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items'
             )
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->join('users', 'users.id_u = pemesanan.id_u')
             ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
+
 
         if (!empty($bulan)) {
 

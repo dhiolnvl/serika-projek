@@ -46,6 +46,7 @@
                                         <th>Total</th>
                                         <th>Bukti Pembayaran</th>
                                         <th>Status</th>
+                                        <th>Nota</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -73,6 +74,21 @@
                                                     <?php endif; ?>
                                                 </td>
                                                 <td><span class="badge bg-success"><?= esc($row['status']) ?></span></td>
+                                                <td>
+                                                    <a
+                                                        class="btn btn-success btn-sm"
+                                                        target="_blank"
+                                                        href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $row['no_hp']) ?>?text=<?= rawurlencode(
+                                                                                                                                        "Halo " . $row['nama'] . ",\n\nTerima kasih atas pesanan Anda!\n\n" .
+                                                                                                                                            "ID Transaksi: " . $row['id_p'] . "\n" .
+                                                                                                                                            "Total: Rp " . number_format($row['total_harga'], 0, ',', '.') . "\n\n" .
+                                                                                                                                            "Detail:\n" . str_replace('|', "\n", $row['detail_items']) . "\n\n" .
+                                                                                                                                            "Silakan hubungi kami jika ada pertanyaan."
+                                                                                                                                    ) ?>">
+                                                        Kirim Nota
+                                                    </a>
+                                                </td>
+
                                             </tr>
                                         <?php endif; ?>
                                     <?php endforeach; ?>

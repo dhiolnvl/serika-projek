@@ -612,6 +612,11 @@ abbr {
   text-align: center;
 }
 
+.text-center p {
+  font-size: 0.9rem;
+  line-height: 1.2;
+}
+
 .text-justify {
   text-align: justify;
 }
@@ -2543,7 +2548,7 @@ footer#footer {
   width: 40px;
   height: 40px;
   padding: 0;
-  background-color: #f5f3e6; 
+  background-color: #f5f3e6;
   color: white;
   border: none;
   border-radius: 50%;

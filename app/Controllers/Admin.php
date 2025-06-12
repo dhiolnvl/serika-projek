@@ -98,6 +98,7 @@ class Admin extends BaseController
             'nama'     => $this->request->getPost('nama'),
             'alamat'   => $this->request->getPost('alamat'),
             'no_hp'     => $this->request->getPost('no_hp'),
+            'status'    => $this->request->getPost('status'),
         ];
 
         $modelUser->insert($data);
@@ -151,6 +152,7 @@ class Admin extends BaseController
             'nama'     => $this->request->getPost('nama'),
             'alamat'   => $this->request->getPost('alamat'),
             'no_hp'    => $this->request->getPost('no_hp'),
+            'status'    => $this->request->getPost('status'),
         ];
 
         $userModel->update($id_u, $data);
@@ -170,15 +172,6 @@ class Admin extends BaseController
         $data['stok'] = $stokModel->findAll();
         return view('admin/forms/stok', $data);
     }
-
-    // public function updateStok()
-    // {
-    //     $stokModel = new StokModel();
-    //     $id = $this->request->getPost('id');
-    //     $stokBaru = $this->request->getPost('stok');
-    //     $stokModel->update($id, ['stok' => $stokBaru]);
-    //     return redirect()->to('/admin/stok')->with('success', 'Stok diperbarui.');
-    // }
 
     public function inputStok()
     {
@@ -206,7 +199,6 @@ class Admin extends BaseController
 
     public function dataStok()
     {
-        // $id_user = session()->get('id');
 
         $StokModel = new StokModel();
         $data['stoks'] = $StokModel->findAll();
@@ -245,5 +237,17 @@ class Admin extends BaseController
         $stokModel = new StokModel();
         $stokModel->delete($id);
         return redirect()->to('/admin/dataStok')->with('success', 'Data stok berhasil dihapus!');
+    }
+
+    public function statusUser($id_u)
+    {
+        $userModel = new UserModel();
+
+        $data = [
+            'status' => 'Aktif'
+        ];
+
+        $userModel->update($id_u, $data);
+        return redirect()->to('/admin/dataPelanggan')->with('success', 'Akun berhasil diaktifkan!');
     }
 }

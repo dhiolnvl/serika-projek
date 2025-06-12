@@ -33,6 +33,7 @@
                     <th>Nama</th>
                     <th>Alamat</th>
                     <th>No HP</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -43,7 +44,9 @@
                       <td><?= esc($user['nama']) ?></td>
                       <td><?= esc($user['alamat']) ?></td>
                       <td><?= esc($user['no_hp']) ?></td>
+                      <th><?= esc($user['status']) ?></th>
                       <td>
+                        <a href="<?= base_url('admin/statusUser/' . $user['id_u']) ?>" class="btn btn-success btn-sm">Aktifkan</a>
                         <a href="<?= base_url('admin/editPelanggan/' . $user['id_u']) ?>" class="btn btn-warning btn-sm">Edit</a>
                         <a href="<?= base_url('admin/deletePelanggan/' . $user['id_u']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
                       </td>

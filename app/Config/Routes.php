@@ -48,6 +48,7 @@ $routes->get('/logoutAdmin', 'Login::logoutAdmin');
 
 $routes->post('/admin/saveStok', 'Admin::saveStok');
 $routes->post('/admin/saveAdmin', 'Admin::saveAdmin');
+$routes->get('/admin/statusUser/(:num)', 'Admin::statusUser/$1');
 $routes->post('/admin/savePelanggan', 'Admin::savePelanggan');
 
 $routes->get('/admin/editAdmin/(:num)', 'Admin::editAdmin/$1');
