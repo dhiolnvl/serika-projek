@@ -78,7 +78,7 @@
       <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
           <ul class="nav nav-secondary">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a data-bs-toggle="collapse" href="#dashboard" role="button" aria-expanded="false" aria-controls="dashboard">
                 <i class="fas fa-home"></i>
                 <p>Dashboard</p>
@@ -183,7 +183,7 @@
                     <a href="<?= base_url("/admin/dataTransaksi") ?>">
                       <span class="sub-item">Transaksi</span>
                     </a>
-                    <a href="/admin/dataRiwayat">
+                    <a href="<?= base_url("/admin/dataRiwayat") ?>">
                       <span class="sub-item">Riwayat Transaksi</span>
                     </a>
                   </li>

@@ -11,32 +11,42 @@ class Transaksi extends BaseController
     public function dataTransaksi()
     {
         $db = \Config\Database::connect();
+        $bulan = $this->request->getGet('bulan'); // Ambil parameter bulan dari URL
 
-        $query = $db->table('pemesanan_detail')
+        $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
-             pemesanan.id_u,
-             pemesanan.nama,
-             pemesanan.bukti_pembayaran,
-             pemesanan_detail.status,
-             SUM(pemesanan_detail.harga) as total_harga,
-             GROUP_CONCAT(CONCAT(
-                 pemesanan_detail.jenis, " - ",
-                 pemesanan_detail.model, " - ",
-                 pemesanan_detail.ukuran, " - ",
-                 pemesanan_detail.lengan, " - Rp ",
-                 pemesanan_detail.harga
-             ) SEPARATOR "|") AS detail_items'
+         pemesanan.id_u,
+         pemesanan.nama,
+         pemesanan.bukti_pembayaran,
+         pemesanan_detail.status,
+         SUM(pemesanan_detail.harga) as total_harga,
+         GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ",
+             pemesanan_detail.model, " - ",
+             pemesanan_detail.ukuran, " - ",
+             pemesanan_detail.lengan, " - Rp ",
+             pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items'
             )
-            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p');
+
+        // Filter jika ada input bulan
+        if (!empty($bulan)) {
+            $builder->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
+        }
+
+        $query = $builder
             ->groupBy('pemesanan.id_p')
             ->orderBy('pemesanan.id_p', 'DESC')
             ->get();
 
         $data['transaksi'] = $query->getResultArray();
+        $data['bulan'] = $bulan;
 
         return view('admin/tables/dataTransaksi', $data);
     }
+
 
     public function editTransaksi($id_p)
     {
@@ -102,7 +112,7 @@ class Transaksi extends BaseController
     public function riwayatTransaksi()
     {
         $db = \Config\Database::connect();
-        $bulan = $this->request->getGet('bulan'); // Ambil nilai bulan dari query string (?bulan=2025-05)
+        $bulan = $this->request->getGet('bulan');
 
         $builder = $db->table('pemesanan_detail')
             ->select(
@@ -121,7 +131,7 @@ class Transaksi extends BaseController
              ) SEPARATOR "|") AS detail_items'
             )
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
-            ->where('pemesanan_detail.status', 'Selesai');
+            ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
         if (!empty($bulan)) {
 

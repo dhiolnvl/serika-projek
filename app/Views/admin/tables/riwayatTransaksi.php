@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="col-md-3 align-self-end">
                                         <button type="submit" class="btn btn-primary">Filter</button>
-                                        <a href="<?= base_url('/admin/dataTransaksi') ?>" class="btn btn-secondary">Reset</a>
+                                        <a href="<?= base_url('/admin/dataRiwayat') ?>" class="btn btn-secondary">Reset</a>
                                     </div>
                                 </div>
                             </form>
@@ -50,7 +50,7 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($transaksi as $row): ?>
-                                        <?php if ($row['status'] === 'Selesai'): ?>
+                                        <?php if (in_array($row['status'], ['Selesai', 'Dibatalkan'])): ?>
                                             <tr>
                                                 <td><?= esc($row['id_p']) ?></td>
                                                 <td><?= esc($row['id_u']) ?></td>

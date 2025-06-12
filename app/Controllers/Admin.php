@@ -21,17 +21,21 @@ class Admin extends BaseController
 
         $db = \Config\Database::connect();
         $now = time();
+
         $onlineUser = $db->table('online_users')
             ->where('last_activity >=', $now - 300)
             ->countAllResults();
 
-        $pemesananModel = new PemesananModel();
-        $jumlahPesanan = $pemesananModel->countAll();
+
+        $currentMonth = date('Y-m');
+        $jumlahPesanan = $db->table('pemesanan')
+            ->where("DATE_FORMAT(tanggal_pemesanan, '%Y-%m') =", $currentMonth)
+            ->countAllResults();
 
         return view('admin/dashboard', [
-            'jumlahUser'   => $jumlahUser,
-            'onlineUser'  => $onlineUser,
-            'jumlahPesanan' =>  $jumlahPesanan
+            'jumlahUser'     => $jumlahUser,
+            'onlineUser'     => $onlineUser,
+            'jumlahPesanan'  => $jumlahPesanan
         ]);
     }
 

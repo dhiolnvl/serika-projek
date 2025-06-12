@@ -1,0 +1,340 @@
+DEBUG - 2025-06-12 01:10:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:11:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:11:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:11:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:11:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:14:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:15:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:15:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:18:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:18:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:18:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:18:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:19:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:19:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:20:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:20:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:30:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:31:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:33:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:33:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:33:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:33:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:34:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:34:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:35:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:35:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:37:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:40:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 01:40:20 --> mysqli_sql_exception: Illegal parameter data types varchar and row for operation '=' in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesan...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesan...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesan...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesan...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Transaksi.php(135): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-12 01:40:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: admin/dataRiwayat]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 2 APPPATH\Controllers\Transaksi.php(135): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-12 01:40:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 4 APPPATH\Controllers\Transaksi.php(135): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-12 01:40:20 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 5 APPPATH\Controllers\Transaksi.php(135): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-12 01:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:41:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:41:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:41:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:41:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:42:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:42:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:45:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:45:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:45:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:45:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:45:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:46:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:47:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-12 01:47:35 --> mysqli_sql_exception: Illegal parameter data types varchar and row for operation '=' in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesan...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesan...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesan...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesan...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Transaksi.php(134): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-12 01:47:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+[Method: GET, Route: admin/dataRiwayat]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = :pemesanan_detail.status:
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = :DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\'):
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 2 APPPATH\Controllers\Transaksi.php(134): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-12 01:47:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = \'2025-05\'
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = \'2025-05\'
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = :pemesanan_detail.status:
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = :DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\'):
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 4 APPPATH\Controllers\Transaksi.php(134): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-12 01:47:35 --> [Caused by] mysqli_sql_exception: Illegal parameter data types varchar and row for operation '='
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = \'2025-05\'
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = \'2025-05\'
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = (\'Selesai\',\'Dibatalkan\')
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = \'2025-05\'
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` = :pemesanan_detail.status:
+AND DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') = :DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\'):
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 5 APPPATH\Controllers\Transaksi.php(134): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-12 01:47:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:47:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:48:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:51:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:51:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:51:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:51:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:53:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:54:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:54:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:54:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:56:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:56:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:56:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:59:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 01:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-12 01:59:49 --> ErrorException: Array to string conversion
+[Method: GET, Route: admin/dataRiwayat]
+in APPPATH\Views\admin\tables\riwayatTransaksi.php on line 75.
+ 1 APPPATH\Views\admin\tables\riwayatTransaksi.php(75): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\tables\\riwayatTransaksi.php', 75)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\tables\\riwayatTransaksi.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/tables/riwayatTransaksi', [], true)
+ 5 APPPATH\Controllers\Transaksi.php(139): view('admin/tables/riwayatTransaksi', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Transaksi->riwayatTransaksi()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaksi))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-12 01:59:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:01:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:02:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:02:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:02:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:02:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:03:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:03:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:03:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:03:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:04:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:04:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-12 02:05:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -26,7 +26,7 @@
               </div>
               <div class="col col-stats ms-3 ms-sm-0">
                 <div class="numbers">
-                  <p class="card-category">Pengguna</p>
+                  <p class="card-category">Users</p>
                   <h4 class="card-title"><?= $jumlahUser ?></h4>
                 </div>
               </div>

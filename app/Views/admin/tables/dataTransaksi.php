@@ -12,7 +12,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url('/admin/dataPelanggan') ?>">Riwayat</a>
+          <a href="<?= base_url('/admin/dataRiwayat') ?>">Riwayat</a>
         </li>
       </ul>
     </div>
@@ -24,6 +24,18 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
+              <form method="GET" class="mb-3">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="bulan">Filter Bulan:</label>
+                    <input type="month" id="bulan" name="bulan" class="form-control" value="<?= esc($_GET['bulan'] ?? '') ?>">
+                  </div>
+                  <div class="col-md-3 align-self-end">
+                    <button type="submit" class="btn btn-primary">Filter</button>
+                    <a href="<?= base_url('/admin/dataTransaksi') ?>" class="btn btn-secondary">Reset</a>
+                  </div>
+                </div>
+              </form>
               <table
                 id="basic-datatables"
                 class="display table table-striped table-hover">
