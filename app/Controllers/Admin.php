@@ -26,17 +26,63 @@ class Admin extends BaseController
             ->where('last_activity >=', $now - 300)
             ->countAllResults();
 
+        $pesananBaru = $db->table('pemesanan_detail')
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->whereNotIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan'])
+            ->groupBy('pemesanan.id_p')
+            ->get()
+            ->getNumRows();
 
-        $currentMonth = date('Y-m');
-        $jumlahPesanan = $db->table('pemesanan')
-            ->where("DATE_FORMAT(tanggal_pemesanan, '%Y-%m') =", $currentMonth)
-            ->countAllResults();
+        $pesananSelesai = $db->table('pemesanan_detail')
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->whereIn('pemesanan_detail.status', ['Selesai'])
+            ->groupBy('pemesanan.id_p')
+            ->get()
+            ->getNumRows();
 
-        return view('admin/dashboard', [
+        $totalSelesai = $db->table('pemesanan_detail')
+            ->selectSum('harga')
+            ->where('status', 'Selesai')
+            ->get()
+            ->getRow()
+            ->harga;
+
+        $builder = $db->table('pemesanan_detail')
+            ->select(
+                'pemesanan.id_p,
+         pemesanan.id_u,
+         pemesanan.nama,
+         users.no_hp,
+         pemesanan.bukti_pembayaran,
+         pemesanan_detail.status,
+         SUM(pemesanan_detail.harga) as total_harga,
+         GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ",
+             pemesanan_detail.model, " - ",
+             pemesanan_detail.ukuran, " - ",
+             pemesanan_detail.lengan, " - Rp ",
+             pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items'
+            )
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->join('users', 'users.id_u = pemesanan.id_u')
+            ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
+
+        $query = $builder
+            ->groupBy('pemesanan.id_p')
+            ->orderBy('pemesanan.id_p', 'DESC')
+            ->get();
+
+        $data['transaksi'] = $query->getResultArray();
+
+
+        return view('admin/dashboard', array_merge([
             'jumlahUser'     => $jumlahUser,
             'onlineUser'     => $onlineUser,
-            'jumlahPesanan'  => $jumlahPesanan
-        ]);
+            'pesananBaru'    => $pesananBaru,
+            'pesananSelesai' => $pesananSelesai,
+            'totalSelesai'   => $totalSelesai,
+        ], $data));
     }
 
     public function inputAdmin()

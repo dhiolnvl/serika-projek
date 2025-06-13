@@ -4,24 +4,7 @@ namespace App\Controllers;
 
 class Pemesanan extends BaseController
 {
-    // public function index()
-    // {
-    //     $id_user = session()->get('id_u');
-    //     if (!$id_user) {
-    //         return redirect()->to('/login')->with('error', 'Silakan login dulu.');
-    //     }
-
-    //     $pemesananModel = new PemesananModel();
-    //     $detailModel = new DetailModel();
-
-    //     $pemesanan = $pemesananModel->where('id_u', $id_user)->findAll();
-
-    //     foreach ($pemesanan as &$p) {
-    //         $p['detail'] = $detailModel->where('id_p', $p['id_p'])->findAll();
-    //     }
-
-    //     return view('pemesanan/index', ['pemesanan' => $pemesanan]);
-    // }
+    
     public function index()
     {
         $id_user = session()->get('id_u');

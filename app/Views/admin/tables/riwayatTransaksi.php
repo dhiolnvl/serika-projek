@@ -81,7 +81,7 @@
                                                         href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $row['no_hp']) ?>?text=<?= rawurlencode(
                                                                                                                                         "Halo " . $row['nama'] . ",\n\nTerima kasih atas pesanan Anda!\n\n" .
                                                                                                                                             "ID Transaksi: " . $row['id_p'] . "\n" .
-                                                                                                                                            "Total: Rp " . number_format($row['total_harga'], 0, ',', '.') . "\n\n" .
+                                                                                                                                      "Total: Rp " . number_format($row['total_harga'], 0, ',', '.') . "\n\n" .
                                                                                                                                             "Detail:\n" . str_replace('|', "\n", $row['detail_items']) . "\n\n" .
                                                                                                                                             "Silakan hubungi kami jika ada pertanyaan."
                                                                                                                                     ) ?>">

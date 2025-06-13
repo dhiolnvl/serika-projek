@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+use Midtrans\Snap;
+use Midtrans\Config as MidtransConfig;
+use Config\Midtrans as MidtransSettings;
+
 use App\Models\KeranjangModel;
 use App\Models\PemesananModel;
 use App\Models\DetailModel;
@@ -187,7 +191,7 @@ class Keranjang extends BaseController
         $id_pemesanan = $modelPemesanan->getInsertID();
 
         foreach ($keranjang as $item) {
-            // 1. Tambahkan ke tabel detail
+
             $modelDetail->insert([
                 'id_p' => $id_pemesanan,
                 'jenis' => $item['jenis'],
@@ -211,9 +215,113 @@ class Keranjang extends BaseController
             }
         }
 
-        // 3. Kosongkan keranjang
         $modelKeranjang->where('id_u', $id_user)->delete();
 
         return redirect()->to('/pemesanan')->with('success', 'Pembayaran berhasil! Bukti pembayaran diterima.');
+    }
+
+    public function token()
+    {
+        $id_user = session()->get('id_u');
+
+        $keranjangModel = new KeranjangModel();
+        $userModel = new UserModel();
+
+        $user = $userModel->where('id_u', $id_user)->first();
+        $keranjang = $keranjangModel->where('id_u', $id_user)->findAll();
+
+        if (empty($keranjang)) {
+            return $this->response->setJSON(['error' => 'Keranjang kosong']);
+        }
+
+        $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
+        $order_id = 'ORDER-' . time();
+
+        $midtrans = new \Config\Midtrans();
+        \Midtrans\Config::$serverKey = $midtrans->serverKey;
+        \Midtrans\Config::$isProduction = $midtrans->isProduction;
+        \Midtrans\Config::$isSanitized = $midtrans->isSanitized;
+        \Midtrans\Config::$is3ds = $midtrans->is3ds;
+
+        $total = 1000; //TES
+        $params = [
+            'transaction_details' => [
+                'order_id' => $order_id,
+                'gross_amount' => $total,
+            ],
+            'customer_details' => [
+                'first_name' => $user['nama'],
+                'email' => $user['email'] ?? 'dhiolinoval@example.com',
+                'phone' => $user['no_hp'],
+            ],
+        ];
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        // Simpan transaksi sementara (optional)
+        session()->set('order_id', $order_id);
+        session()->set('total_bayar', $total);
+
+        return $this->response->setJSON(['token' => $snapToken]);
+    }
+
+    public function notification()
+    {
+        $midtrans = new \Config\Midtrans();
+        \Midtrans\Config::$serverKey = $midtrans->serverKey;
+        \Midtrans\Config::$isProduction = $midtrans->isProduction;
+
+        $notif = new \Midtrans\Notification();
+        $transaction = $notif->transaction_status;
+        $order_id = $notif->order_id;
+        $gross_amount = $notif->gross_amount;
+
+        if ($transaction === 'settlement') {
+            // Pembayaran sukses → Simpan ke DB
+            $id_user = session()->get('id_u');
+            $keranjangModel = new KeranjangModel();
+            $pemesananModel = new PemesananModel();
+            $detailModel = new DetailModel();
+            $stokModel = new StokModel();
+            $userModel = new UserModel();
+
+            $user = $userModel->where('id_u', $id_user)->first();
+            $keranjang = $keranjangModel->where('id_u', $id_user)->findAll();
+
+            $pemesananModel->insert([
+                'id_u' => $id_user,
+                'nama' => $user['nama'],
+                'alamat' => $user['alamat'],
+                'no_hp' => $user['no_hp'],
+                'total' => $gross_amount,
+                'tanggal_pemesanan' => date('Y-m-d H:i:s'),
+                'bukti_pembayaran' => null, // Karena via Midtrans
+            ]);
+
+            $id_pemesanan = $pemesananModel->getInsertID();
+
+            foreach ($keranjang as $item) {
+                $detailModel->insert([
+                    'id_p' => $id_pemesanan,
+                    'jenis' => $item['jenis'],
+                    'model' => $item['model'],
+                    'ukuran' => $item['ukuran'],
+                    'lengan' => $item['lengan'],
+                    'harga' => $item['harga'],
+                    'status' => 'Menunggu',
+                    'tanggal_pemesanan' => date('Y-m-d H:i:s')
+                ]);
+
+                $stok = $stokModel->where('jenis', $item['jenis'])->first();
+                if ($stok && $stok['stok'] > 0) {
+                    $stokBaru = $stok['stok'] - 1;
+                    $stokModel->update($stok['id'], ['stok' => $stokBaru]);
+                }
+            }
+
+            $keranjangModel->where('id_u', $id_user)->delete();
+        }
+
+        return $this->response->setStatusCode(200);
     }
 }

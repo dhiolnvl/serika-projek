@@ -92,3 +92,5 @@ $routes->post('/admin/updateStok/(:num)', 'Admin::updateStok/$1');
 $routes->get('/admin/deleteStok/(:num)', 'Admin::deleteStok/$1');
 
 $routes->get('/unauth', 'Home::unauth');
+
+$routes->get('/keranjang/token', 'Keranjang::token');
