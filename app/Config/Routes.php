@@ -50,6 +50,7 @@ $routes->post('/admin/saveStok', 'Admin::saveStok');
 $routes->post('/admin/saveAdmin', 'Admin::saveAdmin');
 $routes->get('/admin/statusUser/(:num)', 'Admin::statusUser/$1');
 $routes->post('/admin/savePelanggan', 'Admin::savePelanggan');
+$routes->post('/admin/saveKategori', 'Admin::saveKategori');
 
 $routes->get('/admin/editAdmin/(:num)', 'Admin::editAdmin/$1');
 $routes->post('/admin/updateAdmin/(:num)', 'Admin::updateAdmin/$1');
@@ -58,6 +59,10 @@ $routes->get('/admin/deleteAdmin/(:num)', 'Admin::deleteAdmin/$1');
 $routes->get('/admin/editPelanggan/(:num)', 'Admin::editPelanggan/$1');
 $routes->post('/admin/updatePelanggan/(:num)', 'Admin::updatePelanggan/$1');
 $routes->get('/admin/deletePelanggan/(:num)', 'Admin::deletePelanggan/$1');
+
+$routes->get('/admin/editKategori/(:num)', 'Admin::editKategori/$1');
+$routes->post('/admin/updateKategori/(:num)', 'Admin::updateKategori/$1');
+$routes->get('/admin/deleteKategori/(:num)', 'Admin::deleteKategori/$1');
 
 $routes->get('/admin/dataTransaksi', 'Transaksi::dataTransaksi');
 $routes->get('/admin/editTransaksi/(:num)', 'Transaksi::editTransaksi/$1');
@@ -70,10 +75,12 @@ $routes->group('', ['filter' => 'admin:admin'], function ($routes) {
     $routes->get('/admin', 'Admin::index');
     $routes->get('/admin/inputAdmin', 'Admin::inputAdmin');
     $routes->get('/admin/inputPelanggan', 'Admin::inputPelanggan');
+    $routes->get('/admin/inputKategori', 'Admin::inputKategori');
     $routes->get('/admin/dataAdmin', 'Admin::dataAdmin');
     $routes->get('/admin/dataPelanggan', 'Admin::dataPelanggan');
     $routes->get('/admin/dataTransaksi', 'Transaksi::dataTransaksi');
     $routes->get('/admin/dataRiwayat', 'Transaksi::riwayatTransaksi');
+    $routes->get('/admin/dataKategori', 'Admin::dataKategori');
     $routes->get('/admin/inputStok', 'Admin::inputStok');
     $routes->get('/admin/dataStok', 'Admin::dataStok');
 });

@@ -78,10 +78,16 @@
       <div class="sidebar-wrapper scrollbar scrollbar-inner">
         <div class="sidebar-content">
           <ul class="nav nav-secondary">
+            <li class="nav-section">
+              <span class="sidebar-mini-icon">
+                <i class="fa fa-ellipsis-h"></i>
+              </span>
+              <h4 class="text-section">UTAMA</h4>
+            </li>
             <li class="nav-item">
               <a data-bs-toggle="collapse" href="#dashboard" role="button" aria-expanded="false" aria-controls="dashboard">
                 <i class="fas fa-home"></i>
-                <p>Dashboard</p>
+                <p>Admin</p>
                 <span class="caret"></span>
               </a>
               <div class="collapse" id="dashboard">
@@ -98,23 +104,42 @@
               <span class="sidebar-mini-icon">
                 <i class="fa fa-ellipsis-h"></i>
               </span>
-              <h4 class="text-section">KELOLA KAIN</h4>
+              <h4 class="text-section">KELOLA BATIK</h4>
             </li>
             <!--  -->
             <li class="nav-item">
-              <a data-bs-toggle="collapse" href="#formss" role="button" aria-expanded="false" aria-controls="formss">
+              <a data-bs-toggle="collapse" href="#kategori" role="button" aria-expanded="false" aria-controls="kategori">
                 <i class="fas fa-pen-square"></i>
-                <p>Kain</p>
+                <p>Kategori</p>
                 <span class="caret"></span>
               </a>
-              <div class="collapse" id="formss">
+              <div class="collapse" id="kategori">
+                <ul class="nav nav-collapse">
+                  <li>
+                    <a href="<?= base_url("/admin/inputKategori") ?>">
+                      <span class="sub-item">Input Kategori</span>
+                    </a>
+                    <a href="<?= base_url("/admin/dataKategori") ?>">
+                      <span class="sub-item">Lihat Kategori</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a data-bs-toggle="collapse" href="#jenis" role="button" aria-expanded="false" aria-controls="jenis">
+                <i class="fas fa-pen-square"></i>
+                <p>Jenis</p>
+                <span class="caret"></span>
+              </a>
+              <div class="collapse" id="jenis">
                 <ul class="nav nav-collapse">
                   <li>
                     <a href="<?= base_url("/admin/inputStok") ?>">
-                      <span class="sub-item">Input Stok</span>
+                      <span class="sub-item">Input Jenis</span>
                     </a>
                     <a href="<?= base_url("/admin/dataStok") ?>">
-                      <span class="sub-item">Lihat Stok</span>
+                      <span class="sub-item">Lihat Jenis</span>
                     </a>
                   </li>
                 </ul>
@@ -181,7 +206,7 @@
                 <ul class="nav nav-collapse">
                   <li>
                     <a href="<?= base_url("/admin/dataTransaksi") ?>">
-                      <span class="sub-item">Transaksi</span>
+                      <span class="sub-item">Data Transaksi</span>
                     </a>
                     <a href="<?= base_url("/admin/dataRiwayat") ?>">
                       <span class="sub-item">Riwayat Transaksi</span>
@@ -309,7 +334,9 @@
         </nav>
         <!-- End Navbar -->
       </div>
+
       <?= $this->renderSection('content'); ?>
+
       <footer class="footer">
         <div class="container-fluid d-flex justify-content-between">
           <nav class="pull-left">
@@ -340,7 +367,6 @@
       </footer>
     </div>
 
-    <!-- End Custom template -->
   </div>
   <!-- PENTING: Bootstrap Bundle includes Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

@@ -4,7 +4,7 @@
 <div class="container">
   <div class="page-inner">
     <div class="page-header">
-      <h3 class="fw-bold mb-3">Data Transaksi</h3>
+      <h3 class="fw-bold mb-3">Transaksi</h3>
       <ul class="breadcrumbs mb-3">
         <li class="nav-home">
           <a href="#">
@@ -12,7 +12,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url('/admin/dataRiwayat') ?>">Riwayat</a>
+          <a href="<?= base_url('/admin/dataRiwayat') ?>">Riwayat Transaksi</a>
         </li>
       </ul>
     </div>
@@ -20,7 +20,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Transaksi</h4>
+            <h4 class="card-title">Data Transaksi</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">

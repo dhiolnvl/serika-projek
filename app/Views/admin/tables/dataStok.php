@@ -4,7 +4,7 @@
 <div class="container">
   <div class="page-inner">
     <div class="page-header">
-      <h3 class="fw-bold mb-3">Data Stok Kain</h3>
+      <h3 class="fw-bold mb-3">Jenis</h3>
       <ul class="breadcrumbs mb-3">
         <li class="nav-home">
           <a href="#">
@@ -12,7 +12,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url('/admin/dataStok') ?>">Data Stok</a>
+          <a href="<?= base_url('/admin/inputStok') ?>">Input Jenis</a>
         </li>
       </ul>
     </div>
@@ -20,7 +20,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Admin</h4>
+            <h4 class="card-title">Data Jenis</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -32,6 +32,7 @@
                     <th>Jenis</th>
                     <th>Stok</th>
                     <th>Gambar</th>
+                    <th>Kategori</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -41,6 +42,7 @@
                       <td><?= esc($stok['jenis']) ?></td>
                       <td><?= esc($stok['stok']) ?></td>
                       <td><?= esc($stok['gambar']) ?></td>
+                      <td><?= esc($stok['kategori']) ?></td>
                       <td>
                         <a href="<?= base_url('admin/editStok/' . $stok['id']) ?>" class="btn btn-warning btn-sm">Edit</a>
                         <a href="<?= base_url('admin/deleteStok/' . $stok['id']) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>

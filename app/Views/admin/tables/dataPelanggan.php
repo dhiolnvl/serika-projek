@@ -4,7 +4,7 @@
 <div class="container">
   <div class="page-inner">
     <div class="page-header">
-      <h3 class="fw-bold mb-3">Data Pelanggan</h3>
+      <h3 class="fw-bold mb-3">Pelanggan</h3>
       <ul class="breadcrumbs mb-3">
         <li class="nav-home">
           <a href="#">
@@ -12,7 +12,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="<?= base_url('/admin/dataAdmin') ?>">Data Admin</a>
+          <a href="<?= base_url('/admin/inputPelanggan') ?>">Input Pelanggan</a>
         </li>
       </ul>
     </div>
@@ -20,7 +20,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title">Pelanggan</h4>
+            <h4 class="card-title">Data Pelanggan</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">

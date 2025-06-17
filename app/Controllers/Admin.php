@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\AdminModel;
-use App\Models\PemesananModel;
+use App\Models\KategoriModel;
 use App\Models\UserModel;
 use App\Models\StokModel;
 
@@ -11,10 +11,10 @@ class Admin extends BaseController
 {
     public function index()
     {
-        $id_user = session()->get('id_a');
-        if (!$id_user) {
-            return redirect()->to('/loginAdmin');
-        }
+        // $id_user = session()->get('id_a');
+        // if (!$id_user) {
+        //     return redirect()->to('/loginAdmin');
+        // }
 
         $userModel = new UserModel();
         $jumlahUser = $userModel->countAll();
@@ -87,14 +87,14 @@ class Admin extends BaseController
 
     public function inputAdmin()
     {
-        $id_user = session()->get('id_a');
+        // $id_user = session()->get('id_a');
 
         return view('admin/forms/inputAdmin');
     }
 
     public function inputPelanggan()
     {
-        $id_user = session()->get('id_a');
+        // $id_user = session()->get('id_a');
 
         return view('admin/forms/inputPelanggan');
     }
@@ -221,7 +221,9 @@ class Admin extends BaseController
 
     public function inputStok()
     {
-        return view('admin/forms/inputStok');
+        $KategoriModel = new KategoriModel();
+        $data['ktg'] = $KategoriModel->findAll();
+        return view('admin/forms/inputStok', $data);
     }
 
     public function saveStok()
@@ -233,26 +235,35 @@ class Admin extends BaseController
         $fileGambar->move('uploads/', $namaGambar);
 
         $data = [
+            'id_ktg' => $this->request->getPost('id_ktg'),
             'jenis' => $this->request->getPost('jenis'),
             'stok' => $this->request->getPost('stok'),
-            'gambar'      => $namaGambar
-
+            'gambar' => $namaGambar,
         ];
 
         $stokModel->insert($data);
-        return redirect()->to('/admin/inputPelanggan')->with('success', 'Data berhasil disimpan!');
+        return redirect()->to('/admin/inputStok')->with('success', 'Data berhasil disimpan!');
     }
 
     public function dataStok()
     {
+        $db = \Config\Database::connect();
+        $builder = $db->table('stok');
+        $builder->select('stok.*, kategori.kategori');
+        $builder->join('kategori', 'kategori.id_ktg = stok.id_ktg');
+        $query = $builder->get();
 
-        $StokModel = new StokModel();
-        $data['stoks'] = $StokModel->findAll();
+        // $StokModel = new StokModel();
+        // $data['stoks'] = $StokModel->findAll();
+
+        $data['stoks'] = $query->getResultArray();
 
         return view('admin/tables/dataStok', $data);
     }
     public function editStok($id)
     {
+        $KategoriModel = new KategoriModel();
+        $data['ktg'] = $KategoriModel->findAll();
         $stokModel = new StokModel();
         $data['stok'] = $stokModel->find($id);
         return view('/admin/forms/editStok', $data);
@@ -270,7 +281,8 @@ class Admin extends BaseController
         $data = [
             'jenis' => $this->request->getPost('jenis'),
             'stok' => $this->request->getPost('stok'),
-            'gambar'      => $namaGambar
+            'gambar'      => $namaGambar,
+            'id_ktg' => $this->request->getPost('id_ktg'),
 
         ];
 
@@ -295,5 +307,57 @@ class Admin extends BaseController
 
         $userModel->update($id_u, $data);
         return redirect()->to('/admin/dataPelanggan')->with('success', 'Akun berhasil diaktifkan!');
+    }
+
+    public function inputKategori()
+    {
+        return view('admin/forms/inputKategori');
+    }
+
+    public function saveKategori()
+    {
+        $KategoriModel = new KategoriModel();
+
+        $data = [
+            'kategori' => $this->request->getPost('kategori'),
+        ];
+
+        $KategoriModel->insert($data);
+        return redirect()->to('/admin/inputKategori')->with('success', 'Data berhasil disimpan!');
+    }
+
+    public function dataKategori()
+    {
+
+        $KategoriModel = new KategoriModel();
+        $data['ktg'] = $KategoriModel->findAll();
+
+        return view('admin/tables/dataKategori', $data);
+    }
+    public function editKategori($id_ktg)
+    {
+        $KategoriModel = new KategoriModel();
+        $data['kategori'] = $KategoriModel->find($id_ktg);
+        return view('/admin/forms/editKategori', $data);
+    }
+
+    public function updateKategori($id_ktg)
+    {
+        $KategoriModel = new KategoriModel();
+
+        $data = [
+            'kategori' => $this->request->getPost('kategori'),
+
+        ];
+
+        $KategoriModel->update($id_ktg, $data);
+        return redirect()->to('/admin/dataKategori')->with('success', 'Data kategori berhasil diubah!');
+    }
+
+    public function deleteKategori($id_ktg)
+    {
+        $KategoriModel = new KategoriModel();
+        $KategoriModel->delete($id_ktg);
+        return redirect()->to('/admin/dataKategori')->with('success', 'Data kategori berhasil dihapus!');
     }
 }

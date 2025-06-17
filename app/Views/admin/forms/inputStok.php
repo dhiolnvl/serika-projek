@@ -46,7 +46,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Form Stok</div>
+              <div class="card-title">Form Jenis</div>
             </div>
             <div class="card-body">
               <div class="row">
@@ -66,8 +66,16 @@
                     <label for="gambar">Gambar Batik</label>
                     <input type="file" name="gambar" class="form-control" id="gambar" accept="image/*" required />
                   </div>
+                  <div class="form-group">
+                    <label for="id_ktg">Kategori</label>
+                    <select name="id_ktg" class="form-control" id="id_ktg" required>
+                      <option value="">-- Pilih Kategori --</option>
+                      <?php foreach ($ktg as $k): ?>
+                        <option value="<?= $k['id_ktg'] ?>"><?= $k['kategori'] ?></option>
+                      <?php endforeach; ?>
+                    </select>
+                  </div>
                 </div>
-
               </div>
             </div>
             <div class="card-action">

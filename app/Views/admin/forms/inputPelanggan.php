@@ -45,7 +45,7 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <div class="card-title">Data Pelanggan</div>
+              <div class="card-title">Form Pelanggan</div>
             </div>
             <div class="card-body">
               <div class="row">

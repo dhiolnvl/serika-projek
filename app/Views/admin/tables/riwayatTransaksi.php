@@ -4,7 +4,7 @@
 <div class="container">
     <div class="page-inner">
         <div class="page-header">
-            <h3 class="fw-bold mb-3">Riwayat Transaksi</h3>
+            <h3 class="fw-bold mb-3">Transaksi</h3>
             <ul class="breadcrumbs mb-3">
                 <li class="nav-home">
                     <a href="#">
@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('/admin/dataTransaksi') ?>">Transaksi</a>
+                    <a href="<?= base_url('/admin/dataTransaksi') ?>">Data Transaksi</a>
                 </li>
             </ul>
         </div>
@@ -81,7 +81,7 @@
                                                         href="https://wa.me/<?= preg_replace('/[^0-9]/', '', $row['no_hp']) ?>?text=<?= rawurlencode(
                                                                                                                                         "Halo " . $row['nama'] . ",\n\nTerima kasih atas pesanan Anda!\n\n" .
                                                                                                                                             "ID Transaksi: " . $row['id_p'] . "\n" .
-                                                                                                                                      "Total: Rp " . number_format($row['total_harga'], 0, ',', '.') . "\n\n" .
+                                                                                                                                            "Total: Rp " . number_format($row['total_harga'], 0, ',', '.') . "\n\n" .
                                                                                                                                             "Detail:\n" . str_replace('|', "\n", $row['detail_items']) . "\n\n" .
                                                                                                                                             "Silakan hubungi kami jika ada pertanyaan."
                                                                                                                                     ) ?>">
