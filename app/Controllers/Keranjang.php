@@ -11,6 +11,7 @@ use App\Models\PemesananModel;
 use App\Models\DetailModel;
 use App\Models\StokModel;
 use App\Models\UserModel;
+use App\Models\KategoriModel;
 
 class Keranjang extends BaseController
 {
@@ -27,10 +28,12 @@ class Keranjang extends BaseController
     {
         $id_user = session()->get('id_u');
         $keranjangModel = new KeranjangModel();
+        $kategoriModel = new KategoriModel();
         $stokModel = new StokModel();
 
         $data['keranjang'] = $keranjangModel->where('id_u', $id_user)->findAll();
         $data['stok_batik'] = $stokModel->findAll();
+        $data['kategori'] = $kategoriModel->findAll();
 
         return view('keranjang/keranjang', $data);
     }

@@ -40,6 +40,14 @@
 
             <h5>Pilih Jenis Batik:</h5>
             <div class="mb-4">
+                <select id="filterKategori" class="form-select" required>
+                    <option value="">-- Semua Kategori --</option>
+                    <?php foreach ($kategori as $ktg): ?>
+                        <option value="<?= esc($ktg['id_ktg']) ?>"><?= esc($ktg['kategori']) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div class="mb-4">
                 <div class="mb-4 d-flex flex-wrap gap-3">
                     <?php foreach ($stok_batik as $batik): ?>
                         <div class="text-center">
@@ -47,14 +55,16 @@
                                 class="pilihan-batik"
                                 data-value="<?= esc($batik['jenis']) ?>"
                                 data-stok="<?= esc($batik['stok']) ?>"
+                                data-kategori="<?= esc($batik['id_ktg']) ?>"
                                 width="100">
+
                             <div>Stok: <?= $batik['stok'] ?></div>
                         </div>
                     <?php endforeach; ?>
                 </div>
             </div>
             <h6>*Wajib memilih.</h6>
-<br>
+            <br>
             <h5>Pilih Model:</h5>
             <div class="mb-4">
                 <img src="/images/model1.png" class="pilihan-model" data-value="Model 1" width="100">
@@ -64,7 +74,7 @@
                 <img src="/images/reqmodel.png" class="pilihan-model" data-value="Request Model" width="100">
             </div>
             <h6>*Wajib memilih.</h6>
-<br>
+            <br>
 
             <div class="row mb-3">
                 <div class="col">
@@ -145,6 +155,17 @@
 </div>
 
 <script>
+    document.getElementById('filterKategori').addEventListener('change', function() {
+        const selectedKategori = this.value;
+        document.querySelectorAll('.pilihan-batik').forEach(img => {
+            if (selectedKategori === '' || img.dataset.kategori === selectedKategori) {
+                img.parentElement.style.display = 'block';
+            } else {
+                img.parentElement.style.display = 'none';
+            }
+        });
+    });
+
     document.querySelectorAll('.pilihan-batik').forEach(img => {
         img.addEventListener('click', function() {
             document.getElementById('jenisInput').value = this.dataset.value;
