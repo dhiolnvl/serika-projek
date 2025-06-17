@@ -93,6 +93,13 @@
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="7" class="text-end fw-bold">Total Pembelian:</td>
+                                        <td class="fw-bold">Rp. <?= number_format($totalSelesai, 0, ',', '.'); ?></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

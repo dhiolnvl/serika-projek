@@ -148,9 +148,18 @@ class Transaksi extends BaseController
             ->orderBy('pemesanan.id_p', 'DESC')
             ->get();
 
+        $totalSelesai = $db->table('pemesanan_detail')
+            ->selectSum('harga')
+            ->where('status', 'Selesai')
+            ->get()
+            ->getRow()
+            ->harga;
+
         $data['transaksi'] = $query->getResultArray();
         $data['bulan'] = $bulan;
 
-        return view('admin/tables/riwayatTransaksi', $data);
+        return view('admin/tables/riwayatTransaksi', array_merge([
+            'totalSelesai'   => $totalSelesai,
+        ], $data));
     }
 }
