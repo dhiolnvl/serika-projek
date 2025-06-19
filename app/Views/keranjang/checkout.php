@@ -19,7 +19,6 @@
     <div class="card shadow p-4">
         <h2 class="mb-4 text-center">Konfirmasi Pemesanan</h2>
 
-        <!-- Tampilkan Data User -->
         <div class="mb-4">
             <h5>Data Pemesan</h5>
             <table class="table table-striped">
@@ -38,7 +37,6 @@
             </table>
         </div>
 
-        <!-- Tabel Keranjang -->
         <table class="table table-bordered">
             <thead>
                 <tr class="text-center">
@@ -67,23 +65,22 @@
         </table>
 
         <div class="text-center mt-4">
-            <p>Silakan transfer ke rekening BCA <strong>232400016 a.n. Batik Serika</strong> sejumlah total di atas.</p>
+            <!-- <p>Silakan transfer ke rekening BCA <strong>232400016 a.n. Batik Serika</strong> sejumlah total di atas.</p> -->
 
-            <form action="<?= base_url('keranjang/bayar')
-                            ?>" method="post" enctype="multipart/form-data" class="d-inline">
+            <!-- <form action="<?= base_url('keranjang/bayar')
+                                ?>" method="post" enctype="multipart/form-data" class="d-inline">
                 <?= csrf_field()
                 ?>
                 <div class="mb-3 text-start">
                     <label for="bukti" class="form-label">Upload Bukti Pembayaran (jpg/png/pdf):</label>
                     <input type="file" name="bukti" id="bukti" accept=".jpg,.jpeg,.png,.pdf" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-success">Saya Sudah Bayar</button>
-            </form>
-            <button id="pay-button" class="btn btn-success">Bayar dengan Midtrans</button>
-
+                <button type="submit" class="btn btn-success">Bayar</button>
+            </form> -->
+            <!-- <button id="pay-button" class="btn btn-success">Bayar</button> -->
+            <a id="pay-button" class="btn btn-secondary ms-2">Bayar</a>
             <a href="<?= base_url('keranjang') ?>" class="btn btn-secondary ms-2">Kembali</a>
         </div>
-
     </div>
 </div>
 
@@ -115,6 +112,4 @@
             });
     });
 </script>
-
-
 <?= $this->endSection(); ?>

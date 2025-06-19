@@ -21,17 +21,27 @@
     </div>
 
     <div class="mb-4 text-end">
-        <a href="<?= base_url('logout') ?>" class="btn btn-outline-danger">Logout</a>
+        <a href="<?= base_url('/logout') ?>" class="btn btn-outline-danger">Logout</a>
     </div>
 
     <div class="mb-4 text-end">
         <a href="<?= base_url('/pemesanan') ?>" class="btn btn-outline-danger">Cek Pemesanan</a>
     </div>
 
+    <div class="mb-4 text-end">
+        <a href="<?= base_url('/keranjang/editPelanggan/' . $user['id_u']) ?>" class="btn btn-outline-danger">Edit Profil</a>
+    </div>
 
     <div class="card shadow p-4">
         <h2 class="mb-4 text-center">Form Pemesanan Batik</h2>
-
+        <div class="mb-4">
+            <select id="filterKategori" class="form-select">
+                <option value="">-- Kategori Batik --</option>
+                <?php foreach ($kategori as $ktg): ?>
+                    <option value="<?= esc($ktg['id_ktg']) ?>"><?= esc($ktg['kategori']) ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
         <form action="<?= base_url('keranjang/tambah') ?>" method="post">
             <?= csrf_field() ?>
 
@@ -39,14 +49,6 @@
             <input type="hidden" name="model" id="modelInput">
 
             <h5>Pilih Jenis Batik:</h5>
-            <div class="mb-4">
-                <select id="filterKategori" class="form-select" required>
-                    <option value="">-- Semua Kategori --</option>
-                    <?php foreach ($kategori as $ktg): ?>
-                        <option value="<?= esc($ktg['id_ktg']) ?>"><?= esc($ktg['kategori']) ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
             <div class="mb-4">
                 <div class="mb-4 d-flex flex-wrap gap-3">
                     <?php foreach ($stok_batik as $batik): ?>

@@ -117,7 +117,7 @@
           </div>
           <div class="card-body pb-0">
             <div class="mb-4 mt-2">
-              <h1>Rp. <?= $totalSelesai ?></h1>
+              <h1>Rp. <?= number_format($totalSelesai, 0, ',', '.');  ?></h1>
             </div>
             <div class="pull-in">
               <canvas id="dailySalesChart"></canvas>

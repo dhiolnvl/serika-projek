@@ -14,7 +14,7 @@
                     <table class="table table-bordered">
                         <tr>
                             <th>Tanggal</th>
-                            <td><?= date('d-m-Y H:i', strtotime($item['tanggal_pemesanan'])) ?></td>
+                            <td><?= date('d-m-Y', strtotime($item['tanggal_pemesanan'])) ?></td>
                         </tr>
                         <tr>
                             <th>Total</th>

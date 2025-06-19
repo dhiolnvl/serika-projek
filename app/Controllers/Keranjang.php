@@ -30,13 +30,16 @@ class Keranjang extends BaseController
         $keranjangModel = new KeranjangModel();
         $kategoriModel = new KategoriModel();
         $stokModel = new StokModel();
+        $userModel = new UserModel();
 
         $data['keranjang'] = $keranjangModel->where('id_u', $id_user)->findAll();
         $data['stok_batik'] = $stokModel->findAll();
         $data['kategori'] = $kategoriModel->findAll();
+        $data['user'] = $userModel->find($id_user);
 
         return view('keranjang/keranjang', $data);
     }
+
 
     public function simpanDataDiri()
     {
@@ -227,18 +230,58 @@ class Keranjang extends BaseController
     {
         $id_user = session()->get('id_u');
 
-        $keranjangModel = new KeranjangModel();
+        $modelKeranjang = new KeranjangModel();
+        $modelPemesanan = new PemesananModel();
+        $modelDetail = new DetailModel();
+        $stokModel = new StokModel();
         $userModel = new UserModel();
 
         $user = $userModel->where('id_u', $id_user)->first();
-        $keranjang = $keranjangModel->where('id_u', $id_user)->findAll();
+        $keranjang = $modelKeranjang->where('id_u', $id_user)->findAll();
 
         if (empty($keranjang)) {
-            return $this->response->setJSON(['error' => 'Keranjang kosong']);
+            return $this->response->setJSON(['error' => 'Keranjang kosong.']);
         }
+
 
         $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
         $order_id = 'ORDER-' . time();
+
+        $modelPemesanan->insert([
+            'id_u' => $id_user,
+            'nama' => $user['nama'],
+            'alamat' => $user['alamat'],
+            'no_hp' => $user['no_hp'],
+            'total' => $total,
+            'tanggal_pemesanan' => date('Y-m-d'),
+            // 'bukti_pembayaran' => null,
+            'order_id' => $order_id
+        ]);
+
+        $id_pemesanan = $modelPemesanan->getInsertID();
+
+        foreach ($keranjang as $item) {
+            $modelDetail->insert([
+                'id_p' => $id_pemesanan,
+                'jenis' => $item['jenis'],
+                'model' => $item['model'],
+                'ukuran' => $item['ukuran'],
+                'lengan' => $item['lengan'],
+                'harga' => $item['harga'],
+                'status' => 'Menunggu',
+                'tanggal_pemesanan' => date('Y-m-d')
+            ]);
+
+            $stok = $stokModel->where('jenis', $item['jenis'])->first();
+            if (!$stok || $stok['stok'] <= 0) {
+                return $this->response->setJSON(['error' => 'Stok habis untuk jenis: ' . $item['jenis']]);
+            }
+
+            $stokBaru = $stok['stok'] - 1;
+            $stokModel->update($stok['id'], ['stok' => $stokBaru]);
+        }
+
+        $modelKeranjang->where('id_u', $id_user)->delete();
 
         $midtrans = new \Config\Midtrans();
         \Midtrans\Config::$serverKey = $midtrans->serverKey;
@@ -246,7 +289,6 @@ class Keranjang extends BaseController
         \Midtrans\Config::$isSanitized = $midtrans->isSanitized;
         \Midtrans\Config::$is3ds = $midtrans->is3ds;
 
-        $total = 1000; //TES
         $params = [
             'transaction_details' => [
                 'order_id' => $order_id,
@@ -254,19 +296,103 @@ class Keranjang extends BaseController
             ],
             'customer_details' => [
                 'first_name' => $user['nama'],
-                'email' => $user['email'] ?? 'dhiolinoval@example.com',
+                'email' => $user['email'] ?? 'default@email.com',
                 'phone' => $user['no_hp'],
             ],
         ];
 
+
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
-        // Simpan transaksi sementara (optional)
-        session()->set('order_id', $order_id);
-        session()->set('total_bayar', $total);
-
+        session()->set([
+            'order_id' => $order_id,
+            'total_bayar' => $total
+        ]);
         return $this->response->setJSON(['token' => $snapToken]);
     }
+
+
+
+    // public function bayar()
+    // {
+    //     $id_user = session()->get('id_u');
+
+    // $modelKeranjang = new KeranjangModel();
+    // $modelPemesanan = new PemesananModel();
+    // $modelDetail = new DetailModel();
+    // $stokModel = new StokModel();
+    // $userModel = new UserModel();
+
+    //     $user = $userModel->where('id_u', $id_user)->first();
+    //     $keranjang = $modelKeranjang->where('id_u', $id_user)->findAll();
+
+    //     if (empty($keranjang)) {
+    //         return $this->response->setJSON(['error' => 'Keranjang kosong']);
+    //     }
+
+    //     $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
+
+    //     $midtrans = new MidtransSettings();
+    //     MidtransConfig::$serverKey = $midtrans->serverKey;
+    //     MidtransConfig::$isProduction = $midtrans->isProduction;
+    //     MidtransConfig::$isSanitized = $midtrans->isSanitized;
+    //     MidtransConfig::$is3ds = $midtrans->is3ds;
+
+    //     $order_id = 'ORDER-' . time();
+
+    // $modelPemesanan->insert([
+    //     'id_u' => $id_user,
+    //     'nama' => $user['nama'],
+    //     'alamat' => $user['alamat'],
+    //     'no_hp' => $user['no_hp'],
+    //     'total' => $total,
+    //     'tanggal_pemesanan' => date('Y-m-d'),
+    //     'bukti_pembayaran' => null,
+    //     'order_id' => $order_id
+    // ]);
+
+    // $id_pemesanan = $modelPemesanan->getInsertID();
+
+    // foreach ($keranjang as $item) {
+    //     $modelDetail->insert([
+    //         'id_p' => $id_pemesanan,
+    //         'jenis' => $item['jenis'],
+    //         'model' => $item['model'],
+    //         'ukuran' => $item['ukuran'],
+    //         'lengan' => $item['lengan'],
+    //         'harga' => $item['harga'],
+    //         'status' => 'Menunggu',
+    //         'tanggal_pemesanan' => date('Y-m-d')
+    //     ]);
+
+    //     $stok = $stokModel->where('jenis', $item['jenis'])->first();
+    //     if (!$stok || $stok['stok'] <= 0) {
+    //         return $this->response->setJSON(['error' => 'Stok habis untuk jenis: ' . $item['jenis']]);
+    //     }
+
+    //     $stokBaru = $stok['stok'] - 1;
+    //     $stokModel->update($stok['id'], ['stok' => $stokBaru]);
+    // }
+
+    // $modelKeranjang->where('id_u', $id_user)->delete();
+
+    //     $params = [
+    //         'transaction_details' => [
+    //             'order_id' => $order_id,
+    //             'gross_amount' => $total,
+    //         ],
+    //         'customer_details' => [
+    //             'first_name' => $user['nama'],
+    //             'email' => $user['email'] ?? 'dhiolinoval@gmail.com',
+    //             'phone' => $user['no_hp'],
+    //         ],
+    //     ];
+
+    //     $snapToken = Snap::getSnapToken($params);
+
+    //     return $this->response->setJSON(['token' => $snapToken]);
+    // }
+
 
     public function notification()
     {
@@ -276,11 +402,10 @@ class Keranjang extends BaseController
 
         $notif = new \Midtrans\Notification();
         $transaction = $notif->transaction_status;
-        $order_id = $notif->order_id;
         $gross_amount = $notif->gross_amount;
 
         if ($transaction === 'settlement') {
-            // Pembayaran sukses → Simpan ke DB
+
             $id_user = session()->get('id_u');
             $keranjangModel = new KeranjangModel();
             $pemesananModel = new PemesananModel();
@@ -298,7 +423,7 @@ class Keranjang extends BaseController
                 'no_hp' => $user['no_hp'],
                 'total' => $gross_amount,
                 'tanggal_pemesanan' => date('Y-m-d H:i:s'),
-                'bukti_pembayaran' => null, // Karena via Midtrans
+                'bukti_pembayaran' => null,
             ]);
 
             $id_pemesanan = $pemesananModel->getInsertID();
@@ -326,5 +451,26 @@ class Keranjang extends BaseController
         }
 
         return $this->response->setStatusCode(200);
+    }
+
+    public function editPelanggan($id_u)
+    {
+        $UserModel = new UserModel();
+        $data['user'] = $UserModel->find($id_u);
+        return view('/keranjang/editPelanggan', $data);
+    }
+
+    public function updatePelanggan($id_u)
+    {
+        $userModel = new UserModel();
+
+        $data = [
+            'nama'     => $this->request->getPost('nama'),
+            'alamat'   => $this->request->getPost('alamat'),
+            'no_hp'    => $this->request->getPost('no_hp'),
+        ];
+
+        $userModel->update($id_u, $data);
+        return redirect()->to('/keranjang')->with('success', 'Data berhasil diubah!');
     }
 }

@@ -60,6 +60,9 @@ $routes->get('/admin/editPelanggan/(:num)', 'Admin::editPelanggan/$1');
 $routes->post('/admin/updatePelanggan/(:num)', 'Admin::updatePelanggan/$1');
 $routes->get('/admin/deletePelanggan/(:num)', 'Admin::deletePelanggan/$1');
 
+$routes->get('/keranjang/editPelanggan/(:num)', 'Keranjang::editPelanggan/$1');
+$routes->post('/keranjang/updatePelanggan/(:num)', 'Keranjang::updatePelanggan/$1');
+
 $routes->get('/admin/editKategori/(:num)', 'Admin::editKategori/$1');
 $routes->post('/admin/updateKategori/(:num)', 'Admin::updateKategori/$1');
 $routes->get('/admin/deleteKategori/(:num)', 'Admin::deleteKategori/$1');
@@ -101,3 +104,4 @@ $routes->get('/admin/deleteStok/(:num)', 'Admin::deleteStok/$1');
 $routes->get('/unauth', 'Home::unauth');
 
 $routes->get('/keranjang/token', 'Keranjang::token');
+$routes->post('/keranjang/notification', 'Keranjang::notification');

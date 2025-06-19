@@ -119,27 +119,25 @@ class Transaksi extends BaseController
         $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
-         pemesanan.id_u,
-         pemesanan.nama,
-         users.no_hp,
-         pemesanan.bukti_pembayaran,
-         pemesanan_detail.status,
-         SUM(pemesanan_detail.harga) as total_harga,
-         GROUP_CONCAT(CONCAT(
-             pemesanan_detail.jenis, " - ",
-             pemesanan_detail.model, " - ",
-             pemesanan_detail.ukuran, " - ",
-             pemesanan_detail.lengan, " - Rp ",
-             pemesanan_detail.harga
-         ) SEPARATOR "|") AS detail_items'
+             pemesanan.id_u,
+             pemesanan.nama,
+             users.no_hp,
+             pemesanan.bukti_pembayaran,
+             pemesanan_detail.status,
+             SUM(pemesanan_detail.harga) as total_harga,
+             GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ",
+                 pemesanan_detail.model, " - ",
+                 pemesanan_detail.ukuran, " - ",
+                 pemesanan_detail.lengan, " - Rp ",
+                 pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items'
             )
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->join('users', 'users.id_u = pemesanan.id_u')
             ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
-
         if (!empty($bulan)) {
-
             $builder->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
         }
 
@@ -148,18 +146,22 @@ class Transaksi extends BaseController
             ->orderBy('pemesanan.id_p', 'DESC')
             ->get();
 
-        $totalSelesai = $db->table('pemesanan_detail')
-            ->selectSum('harga')
-            ->where('status', 'Selesai')
-            ->get()
-            ->getRow()
-            ->harga;
+        $totalSelesaiQuery = $db->table('pemesanan_detail')
+            ->selectSum('pemesanan_detail.harga')
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->where('pemesanan_detail.status', 'Selesai');
+
+        if (!empty($bulan)) {
+            $totalSelesaiQuery->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
+        }
+
+        $totalSelesai = $totalSelesaiQuery->get()->getRow()->harga ?? 0;
 
         $data['transaksi'] = $query->getResultArray();
         $data['bulan'] = $bulan;
 
         return view('admin/tables/riwayatTransaksi', array_merge([
-            'totalSelesai'   => $totalSelesai,
+            'totalSelesai' => $totalSelesai,
         ], $data));
     }
 }
