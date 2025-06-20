@@ -11,10 +11,6 @@ class Admin extends BaseController
 {
     public function index()
     {
-        // $id_user = session()->get('id_a');
-        // if (!$id_user) {
-        //     return redirect()->to('/loginAdmin');
-        // }
 
         $userModel = new UserModel();
         $jumlahUser = $userModel->countAll();
@@ -47,6 +43,15 @@ class Admin extends BaseController
             ->getRow()
             ->harga;
 
+        $totalPerbulan = $db->table('pemesanan_detail')
+            ->select("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') AS bulan, SUM(pemesanan_detail.harga) AS total")
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->whereIn('pemesanan_detail.status', ['Selesai'])
+            ->groupBy("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m')")
+            ->orderBy("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m')")
+            ->get()
+            ->getResultArray();
+
         $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
@@ -73,6 +78,14 @@ class Admin extends BaseController
             ->orderBy('pemesanan.id_p', 'DESC')
             ->get();
 
+        $kategoriList = $db->table('pemesanan_detail')
+            ->select('kategori.kategori, COUNT(*) as jumlah')
+            ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
+            ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan'])
+            ->groupBy('kategori.kategori')
+            ->get()
+            ->getResultArray();
+
         $data['transaksi'] = $query->getResultArray();
 
 
@@ -82,6 +95,8 @@ class Admin extends BaseController
             'pesananBaru'    => $pesananBaru,
             'pesananSelesai' => $pesananSelesai,
             'totalSelesai'   => $totalSelesai,
+            'totalPerbulan'   => $totalPerbulan,
+            'kategoriList' => $kategoriList,
         ], $data));
     }
 

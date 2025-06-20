@@ -828,3 +828,405 @@ DEBUG - 2025-06-20 03:34:32 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-06-20 03:35:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-06-20 03:37:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-06-20 03:38:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:41:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:41:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:42:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:42:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:42:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:42:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:43:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:43:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:47:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:48:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-20 03:48:35 --> ErrorException: Undefined variable $kategoriList
+[Method: GET, Route: admin]
+in APPPATH\Views\admin\dashboard.php on line 256.
+ 1 APPPATH\Views\admin\dashboard.php(256): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $kategoriList', 'C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php', 256)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(79): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 03:51:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:51:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:52:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:53:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:53:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:53:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:53:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:55:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:56:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:58:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 03:58:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:00:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-20 04:00:29 --> ErrorException: Undefined variable $totalPerBulan
+[Method: GET, Route: admin]
+in APPPATH\Views\admin\dashboard.php on line 226.
+ 1 APPPATH\Views\admin\dashboard.php(226): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalPerBulan', 'C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php', 226)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(83): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 04:01:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:01:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-20 04:01:53 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6 in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT DATE_FOR...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FOR...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FOR...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FOR...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Admin->index()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-20 04:01:53 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+[Method: GET, Route: admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 04:01:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 04:01:53 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(harga) as total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 04:02:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-20 04:02:40 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6 in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT DATE_FOR...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FOR...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FOR...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FOR...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Admin->index()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-20 04:02:40 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+[Method: GET, Route: admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 04:02:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 04:02:40 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 04:02:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-20 04:02:44 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6 in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT DATE_FOR...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FOR...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FOR...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FOR...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Admin->index()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-20 04:02:44 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+[Method: GET, Route: admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 04:02:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 04:02:44 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'ASC, '%Y-%m') ASC' at line 6
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\')
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\') AS bulan, SUM(pemesanan_detail.harga) AS total
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY DATE_FORMAT(pemesanan.tanggal_pemesanan, \'%Y-%m\')
+ORDER BY DATE_FORMAT(pemesanan.tanggal_pemesanan ASC, \'%Y-%m\') ASC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 04:03:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-20 04:03:23 --> ErrorException: Undefined variable $totalSelesai
+[Method: GET, Route: admin]
+in APPPATH\Views\admin\dashboard.php on line 109.
+ 1 APPPATH\Views\admin\dashboard.php(109): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalSelesai', 'C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php', 109)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(86): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 04:04:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-06-20 04:04:26 --> ErrorException: Undefined variable $totalSelesai
+[Method: GET, Route: admin]
+in APPPATH\Views\admin\dashboard.php on line 109.
+ 1 APPPATH\Views\admin\dashboard.php(109): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalSelesai', 'C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php', 109)
+ 2 SYSTEMPATH\View\View.php(224): include('C:\\xampp\\htdocs\\serika-projek\\app\\Views\\admin\\dashboard.php')
+ 3 SYSTEMPATH\View\View.php(227): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1173): CodeIgniter\View\View->render('admin/dashboard', [], true)
+ 5 APPPATH\Controllers\Admin.php(86): view('admin/dashboard', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 04:05:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:06:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:07:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:10:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:12:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:13:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:13:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:13:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:13:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:14:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:16:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:17:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:17:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:18:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:18:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:20:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:21:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:21:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:21:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:22:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:23:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:23:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:24:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:24:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:25:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:25:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:25:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:25:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 04:25:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

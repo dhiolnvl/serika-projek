@@ -79,48 +79,28 @@
         <div class="card card-round">
           <div class="card-header">
             <div class="card-head-row">
-              <div class="card-title">User Statistics</div>
-              <div class="card-tools">
-                <a
-                  href="#"
-                  class="btn btn-label-success btn-round btn-sm me-2">
-                  <span class="btn-label">
-                    <i class="fa fa-pencil"></i>
-                  </span>
-                  Export
-                </a>
-                <a href="#" class="btn btn-label-info btn-round btn-sm">
-                  <span class="btn-label">
-                    <i class="fa fa-print"></i>
-                  </span>
-                  Print
-                </a>
-              </div>
+              <div class="card-title">Statistik Penjualan</div>
             </div>
           </div>
           <div class="card-body">
-            <div class="chart-container" style="min-height: 375px">
+            <div class="chart-container" style="min-height: 420px;">
               <canvas id="statisticsChart"></canvas>
             </div>
-            <div id="myChartLegend"></div>
           </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="card card-primary card-round">
+        <div class="card card-round">
           <div class="card-header">
             <div class="card-head-row">
               <div class="card-title">Total Penjualan</div>
-
             </div>
-            <!-- <div class="card-category">March 25 - April 02</div> -->
           </div>
-          <div class="card-body pb-0">
-            <div class="mb-4 mt-2">
-              <h1>Rp. <?= number_format($totalSelesai, 0, ',', '.');  ?></h1>
-            </div>
-            <div class="pull-in">
-              <canvas id="dailySalesChart"></canvas>
+          <div class="card-body">
+            <div class="chart-container" style="min-height: 175px;">
+              <h6>Grand Total : Rp <?= number_format($totalSelesai, 0, ',', '.'); ?>
+              </h6>
+              <canvas id="totalPenjualanChart"></canvas>
             </div>
           </div>
         </div>
@@ -189,11 +169,83 @@
         </div>
       </div>
     </div>
-
+    <!-- GRAFIK KATEGORI -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById('statisticsChart').getContext('2d');
+      const kategoriChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: <?= json_encode(array_column($kategoriList, 'kategori')) ?>,
+          datasets: [{
+            label: 'Jumlah Penjualan',
+            data: <?= json_encode(array_map(fn($k) => (int)$k['jumlah'], $kategoriList)) ?>,
+            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            borderRadius: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                precision: 0
+              }
+            }
+          }
+        }
+      });
+    </script>
+    <!-- GRAFIK PENJUALAN -->
     <script src="<?= base_url('assets/js/plugin/datatables/datatables.min.js') ?>"></script>
     <script>
       $(document).ready(function() {
         $("#riwayat-datatables").DataTable();
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const totalPenjualanChart = new Chart(document.getElementById('totalPenjualanChart'), {
+        type: 'line',
+        data: {
+          labels: <?= json_encode(array_column($totalPerbulan, 'bulan')) ?>,
+          datasets: [{
+            label: 'Total Penjualan Perbulan (Rp)',
+            data: <?= json_encode(array_map(fn($row) => (int)$row['total'], $totalPerbulan)) ?>,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: '#f3545d',
+            borderWidth: 2,
+            tension: 0.4,
+            fill: true,
+            pointBackgroundColor: '#f3545d'
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: true
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: function(value) {
+                  return 'Rp ' + new Intl.NumberFormat('id-ID').format(value);
+                }
+              }
+            }
+          }
+        }
       });
     </script>
   </div>

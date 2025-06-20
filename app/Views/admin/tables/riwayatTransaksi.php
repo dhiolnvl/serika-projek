@@ -60,7 +60,6 @@
                                         <th>Nama</th>
                                         <th>Detail</th>
                                         <th>Total</th>
-                                        <th>Bukti Pembayaran</th>
                                         <th>Status</th>
                                         <th>Nota</th>
                                     </tr>
@@ -82,13 +81,6 @@
                                                     </ul>
                                                 </td>
                                                 <td>Rp <?= number_format($row['total_harga'], 0, ',', '.') ?></td>
-                                                <td>
-                                                    <?php if ($row['bukti_pembayaran']): ?>
-                                                        <a href="<?= base_url('bukti/' . $row['bukti_pembayaran']) ?>" target="_blank">Lihat</a>
-                                                    <?php else: ?>
-                                                        <span class="text-muted">Belum upload</span>
-                                                    <?php endif; ?>
-                                                </td>
                                                 <td><span class="badge bg-success"><?= esc($row['status']) ?></span></td>
                                                 <td>
                                                     <a
