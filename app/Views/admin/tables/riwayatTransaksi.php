@@ -30,12 +30,28 @@
                                         <label for="bulan">Filter Bulan:</label>
                                         <input type="month" id="bulan" name="bulan" class="form-control" value="<?= esc($_GET['bulan'] ?? '') ?>">
                                     </div>
-                                    <div class="col-md-3 align-self-end">
+                                    <div class="col-md-3">
+                                        <label for="kategori">Filter Kategori:</label>
+                                        <select id="kategori" name="kategori" class="form-control">
+                                            <option value="">-- Semua Kategori --</option>
+                                            <?php foreach ($kategoriList as $k): ?>
+                                                <option value="<?= esc($k['id_ktg']) ?>" <?= ($kategori == $k['id_ktg']) ? 'selected' : '' ?>>
+                                                    <?= esc($k['kategori']) ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5 align-self-end">
                                         <button type="submit" class="btn btn-primary">Filter</button>
                                         <a href="<?= base_url('/admin/dataRiwayat') ?>" class="btn btn-secondary">Reset</a>
+                                        <a href="<?= base_url('/transaksi/cetakPdf?' . http_build_query($_GET)) ?>" target="_blank" class="btn btn-danger">
+                                            <i class="fas fa-file-pdf"></i> Cetak PDF
+                                        </a>
                                     </div>
+
                                 </div>
                             </form>
+
                             <table id="riwayat-datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -93,14 +109,25 @@
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="7" class="text-end fw-bold">Total Pembelian:</td>
-                                        <td class="fw-bold">Rp. <?= number_format($totalSelesai, 0, ',', '.'); ?></td>
-                                        <td colspan="3"></td>
-                                    </tr>
-                                </tfoot>
                             </table>
+                            <div class="row mt-4">
+                                <!-- Kolom Kategori -->
+                                <div class="col-md-6">
+                                    <h5 class="fw-bold">Rekap Pembelian per Kategori:</h5>
+                                    <ul class="mb-0">
+                                        <?php foreach ($kategoriList as $k): ?>
+                                            <li><?= esc($k['kategori']) ?>: <strong><?= esc($k['jumlah']) ?></strong> item</li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+
+                                <!-- Kolom Total -->
+                                <div class="col-md-6 text-end">
+                                    <h5 class="fw-bold">Total Pembelian:</h5>
+                                    <p class="fs-5 fw-bold">Rp. <?= number_format($totalSelesai, 0, ',', '.'); ?></p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -105,3 +105,5 @@ $routes->get('/unauth', 'Home::unauth');
 
 $routes->get('/keranjang/token', 'Keranjang::token');
 $routes->post('/keranjang/notification', 'Keranjang::notification');
+
+$routes->get('/transaksi/cetakPdf', 'Transaksi::cetakPdf');

@@ -1,5 +1,6 @@
-<?= $this->extend('/index'); ?>
+<?= $this->extend('/admin/index'); ?>
 <?= $this->section('content') ?>
+
 <?php if (session()->getFlashdata('success')): ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <?= session()->getFlashdata('success') ?>
@@ -17,16 +18,52 @@
 <form action="<?= base_url('/keranjang/updatePelanggan/' . $user['id_u']) ?>" method="post">
     <div class="container">
         <div class="page-inner">
-            <br>
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card text-center">
+            <div class="page-header">
+                <h3 class="fw-bold mb-3">Edit Pelanggan</h3>
+                <ul class="breadcrumbs mb-3">
+                    <li class="nav-home">
+                        <a href="">
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Data Pelanggan</a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Input Pelanggan</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
                         <div class="card-header">
                             <div class="card-title">Edit Data Pelanggan</div>
                         </div>
-                        <div class="card-body text-center ">
-                            <div class="row justify-content-center">
-                                <div class="col-md-6 col-lg-10">
+                        <div class="card-body">
+                            <div class="row">
+
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username" value="<?= $user['username'] ?>" placeholder="Username" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" c class="form-control" id="password" placeholder="Password" />
+                                        <p style="font-size: smaller;">*Untuk konfirmasi, masukkan ulang password atau ganti password saat mengedit data.</p>
+                                    </div>
+                                </div>
+
+                                <!-- Kolom Kanan -->
+                                <div class="col-md-6 col-lg-4">
                                     <div class="form-group">
                                         <label for="nama">Nama</label>
                                         <input type="text" name="nama" class="form-control" id="nama" value="<?= $user['nama'] ?>" placeholder="Nama Lengkap" />
@@ -39,13 +76,12 @@
                                         <label for="nohp">No WA</label>
                                         <input type="text" name="no_hp" class="form-control" id="nohp" value="<?= $user['no_hp'] ?>" placeholder="08xxxxxxxxxx" />
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="card-action text-center">
+                        <div class="card-action">
                             <button class="btn btn-success">Submit</button>
-                            <button type="submit" class="btn btn-danger <?= base_url('keranjang/keranjang') ?>">Cancel</button>
+                            <button type="submit" class="btn btn-danger <?= base_url('admin/dataPelanggan') ?>">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -121,4 +157,5 @@
         fillColor: "rgba(255, 165, 52, .14)",
     });
 </script>
+
 <?= $this->endSection(); ?>

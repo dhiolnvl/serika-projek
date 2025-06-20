@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\PemesananModel;
 use App\Models\UserModel;
+use Dompdf\Dompdf;
 
 class Transaksi extends BaseController
 {
@@ -115,7 +116,9 @@ class Transaksi extends BaseController
     {
         $db = \Config\Database::connect();
         $bulan = $this->request->getGet('bulan');
+        $kategori = $this->request->getGet('kategori');
 
+        // Query data transaksi
         $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
@@ -124,6 +127,7 @@ class Transaksi extends BaseController
              users.no_hp,
              pemesanan.bukti_pembayaran,
              pemesanan_detail.status,
+             kategori.kategori,
              SUM(pemesanan_detail.harga) as total_harga,
              GROUP_CONCAT(CONCAT(
                  pemesanan_detail.jenis, " - ",
@@ -135,10 +139,15 @@ class Transaksi extends BaseController
             )
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->join('users', 'users.id_u = pemesanan.id_u')
+            ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
             ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
         if (!empty($bulan)) {
             $builder->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
+        }
+
+        if (!empty($kategori)) {
+            $builder->where('kategori.id_ktg', $kategori);
         }
 
         $query = $builder
@@ -146,22 +155,143 @@ class Transaksi extends BaseController
             ->orderBy('pemesanan.id_p', 'DESC')
             ->get();
 
+        // Total selesai
         $totalSelesaiQuery = $db->table('pemesanan_detail')
             ->selectSum('pemesanan_detail.harga')
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
             ->where('pemesanan_detail.status', 'Selesai');
 
         if (!empty($bulan)) {
             $totalSelesaiQuery->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
         }
 
+        if (!empty($kategori)) {
+            $totalSelesaiQuery->where('kategori.id_ktg', $kategori);
+        }
+
         $totalSelesai = $totalSelesaiQuery->get()->getRow()->harga ?? 0;
 
-        $data['transaksi'] = $query->getResultArray();
-        $data['bulan'] = $bulan;
+        $kategoriList = $db->table('pemesanan_detail')
+            ->select('kategori.id_ktg, kategori.kategori, COUNT(*) as jumlah')
+            ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p') // untuk akses tanggal
+            ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
-        return view('admin/tables/riwayatTransaksi', array_merge([
-            'totalSelesai' => $totalSelesai,
-        ], $data));
+        if (!empty($bulan)) {
+            $kategoriList->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
+        }
+
+        $kategoriList = $kategoriList
+            ->groupBy('kategori.id_ktg')
+            ->get()
+            ->getResultArray();
+
+
+        return view('admin/tables/riwayatTransaksi', [
+            'transaksi'     => $query->getResultArray(),
+            'totalSelesai'  => $totalSelesai,
+            'bulan'         => $bulan,
+            'kategori'      => $kategori,
+            'kategoriList'  => $kategoriList,
+        ]);
+    }
+    public function cetakPdf()
+    {
+        $bulan = $this->request->getGet('bulan');
+        $kategori = $this->request->getGet('kategori');
+
+        $data = $this->getRiwayatData($bulan, $kategori);
+
+        $dompdf = new Dompdf();
+        $html = view('admin/export/riwayat_pdf', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->render();
+        $dompdf->stream("riwayat-transaksi.pdf");
+    }
+
+    private function getRiwayatData($bulan, $kategori)
+    {
+        $db = \Config\Database::connect();
+        $bulan = $this->request->getGet('bulan');
+        $kategori = $this->request->getGet('kategori');
+
+        // Query data transaksi
+        $builder = $db->table('pemesanan_detail')
+            ->select(
+                'pemesanan.id_p,
+             pemesanan.id_u,
+             pemesanan.nama,
+             users.no_hp,
+             pemesanan.bukti_pembayaran,
+             pemesanan_detail.status,
+             kategori.kategori,
+             SUM(pemesanan_detail.harga) as total_harga,
+             GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ",
+                 pemesanan_detail.model, " - ",
+                 pemesanan_detail.ukuran, " - ",
+                 pemesanan_detail.lengan, " - Rp ",
+                 pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items'
+            )
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->join('users', 'users.id_u = pemesanan.id_u')
+            ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
+            ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
+
+        if (!empty($bulan)) {
+            $builder->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
+        }
+
+        if (!empty($kategori)) {
+            $builder->where('kategori.id_ktg', $kategori);
+        }
+
+        $query = $builder
+            ->groupBy('pemesanan.id_p')
+            ->orderBy('pemesanan.id_p', 'DESC')
+            ->get();
+
+        // Total selesai
+        $totalSelesaiQuery = $db->table('pemesanan_detail')
+            ->selectSum('pemesanan_detail.harga')
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
+            ->where('pemesanan_detail.status', 'Selesai');
+
+        if (!empty($bulan)) {
+            $totalSelesaiQuery->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
+        }
+
+        if (!empty($kategori)) {
+            $totalSelesaiQuery->where('kategori.id_ktg', $kategori);
+        }
+
+        $totalSelesai = $totalSelesaiQuery->get()->getRow()->harga ?? 0;
+
+        $kategoriList = $db->table('pemesanan_detail')
+            ->select('kategori.id_ktg, kategori.kategori, COUNT(*) as jumlah')
+            ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p') // untuk akses tanggal
+            ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
+
+        if (!empty($bulan)) {
+            $kategoriList->where("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') =", $bulan);
+        }
+
+        $kategoriList = $kategoriList
+            ->groupBy('kategori.id_ktg')
+            ->get()
+            ->getResultArray();
+
+        return [
+            'transaksi'     => $query->getResultArray(),
+            'totalSelesai'  => $totalSelesai,
+            'bulan'         => $bulan,
+            'kategori'      => $kategori,
+            'kategoriList'  => $kategoriList,
+        ];
     }
 }

@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('/admin/inputkategori') ?>">Input Kategori</a>
+                    <a href="<?= base_url('/admin/inputKategori') ?>">Input Kategori</a>
                 </li>
             </ul>
         </div>
