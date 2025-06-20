@@ -19,7 +19,6 @@ class Transaksi extends BaseController
                 'pemesanan.id_p,
          pemesanan.id_u,
          pemesanan.nama,
-         pemesanan.bukti_pembayaran,
          pemesanan_detail.status,
          SUM(pemesanan_detail.harga) as total_harga,
          GROUP_CONCAT(CONCAT(
@@ -118,14 +117,12 @@ class Transaksi extends BaseController
         $bulan = $this->request->getGet('bulan');
         $kategori = $this->request->getGet('kategori');
 
-        // Query data transaksi
         $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
              pemesanan.id_u,
              pemesanan.nama,
              users.no_hp,
-             pemesanan.bukti_pembayaran,
              pemesanan_detail.status,
              kategori.kategori,
              SUM(pemesanan_detail.harga) as total_harga,
@@ -224,7 +221,6 @@ class Transaksi extends BaseController
              pemesanan.id_u,
              pemesanan.nama,
              users.no_hp,
-             pemesanan.bukti_pembayaran,
              pemesanan_detail.status,
              kategori.kategori,
              SUM(pemesanan_detail.harga) as total_harga,

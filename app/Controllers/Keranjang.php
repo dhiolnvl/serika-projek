@@ -140,74 +140,74 @@ class Keranjang extends BaseController
         ]);
     }
 
-    public function bayar()
-    {
-        $id_user = session()->get('id_u');
+    // public function bayar()
+    // {
+    //     $id_user = session()->get('id_u');
 
-        $modelKeranjang = new KeranjangModel();
-        $modelPemesanan = new PemesananModel();
-        $modelDetail = new DetailModel();
-        $stokModel = new StokModel();
-        $userModel = new UserModel();
+    //     $modelKeranjang = new KeranjangModel();
+    //     $modelPemesanan = new PemesananModel();
+    //     $modelDetail = new DetailModel();
+    //     $stokModel = new StokModel();
+    //     $userModel = new UserModel();
 
-        $user = $userModel->where('id_u', $id_user)->first();
-        $keranjang = $modelKeranjang->where('id_u', $id_user)->findAll();
+    //     $user = $userModel->where('id_u', $id_user)->first();
+    //     $keranjang = $modelKeranjang->where('id_u', $id_user)->findAll();
 
-        if (empty($keranjang)) {
-            return redirect()->to('/keranjang')->with('error', 'Keranjang kosong.');
-        }
+    //     if (empty($keranjang)) {
+    //         return redirect()->to('/keranjang')->with('error', 'Keranjang kosong.');
+    //     }
 
-        $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
+    //     $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
 
-        $bukti = $this->request->getFile('bukti');
-        if (!$bukti->isValid() || $bukti->hasMoved()) {
-            return redirect()->back()->with('error', 'Gagal upload bukti pembayaran.');
-        }
+    //     $bukti = $this->request->getFile('bukti');
+    //     if (!$bukti->isValid() || $bukti->hasMoved()) {
+    //         return redirect()->back()->with('error', 'Gagal upload bukti pembayaran.');
+    //     }
 
-        $newName = $bukti->getRandomName();
-        $bukti->move('bukti', $newName);
+    //     $newName = $bukti->getRandomName();
+    //     $bukti->move('bukti', $newName);
 
-        $modelPemesanan->insert([
-            'id_u' => $id_user,
-            'nama' => $user['nama'],
-            'alamat' => $user['alamat'],
-            'no_hp' => $user['no_hp'],
-            'total' => $total,
-            'tanggal_pemesanan' => date('Y-m-d H:i:s'),
-            'bukti_pembayaran' => $newName,
-        ]);
+    //     $modelPemesanan->insert([
+    //         'id_u' => $id_user,
+    //         'nama' => $user['nama'],
+    //         'alamat' => $user['alamat'],
+    //         'no_hp' => $user['no_hp'],
+    //         'total' => $total,
+    //         'tanggal_pemesanan' => date('Y-m-d H:i:s'),
+    //         'bukti_pembayaran' => $newName,
+    //     ]);
 
-        $id_pemesanan = $modelPemesanan->getInsertID();
+    //     $id_pemesanan = $modelPemesanan->getInsertID();
 
-        foreach ($keranjang as $item) {
+    //     foreach ($keranjang as $item) {
 
-            $modelDetail->insert([
-                'id_p' => $id_pemesanan,
-                'jenis' => $item['jenis'],
-                'model' => $item['model'],
-                'ukuran' => $item['ukuran'],
-                'lengan' => $item['lengan'],
-                'harga' => $item['harga'],
-                'status' => 'Menunggu',
-                'tanggal_pemesanan' => date('Y-m-d H:i:s')
-            ]);
+    //         $modelDetail->insert([
+    //             'id_p' => $id_pemesanan,
+    //             'jenis' => $item['jenis'],
+    //             'model' => $item['model'],
+    //             'ukuran' => $item['ukuran'],
+    //             'lengan' => $item['lengan'],
+    //             'harga' => $item['harga'],
+    //             'status' => 'Menunggu',
+    //             'tanggal_pemesanan' => date('Y-m-d H:i:s')
+    //         ]);
 
-            $stok = $stokModel->where('jenis', $item['jenis'])->first();
-            if (!$stok || $stok['stok'] <= 0) {
-                return redirect()->to('/keranjang')->with('error', 'Stok batik jenis ' . $item['jenis'] . ' sedang habis.');
-            }
-            $stok = $stokModel->where('jenis', $item['jenis'])->first();
-            if ($stok && $stok['stok'] > 0) {
-                $stokBaru = $stok['stok'] - 1;
+    //         $stok = $stokModel->where('jenis', $item['jenis'])->first();
+    //         if (!$stok || $stok['stok'] <= 0) {
+    //             return redirect()->to('/keranjang')->with('error', 'Stok batik jenis ' . $item['jenis'] . ' sedang habis.');
+    //         }
+    //         $stok = $stokModel->where('jenis', $item['jenis'])->first();
+    //         if ($stok && $stok['stok'] > 0) {
+    //             $stokBaru = $stok['stok'] - 1;
 
-                $stokModel->update($stok['id'], ['stok' => $stokBaru]);
-            }
-        }
+    //             $stokModel->update($stok['id'], ['stok' => $stokBaru]);
+    //         }
+    //     }
 
-        $modelKeranjang->where('id_u', $id_user)->delete();
+    //     $modelKeranjang->where('id_u', $id_user)->delete();
 
-        return redirect()->to('/pemesanan')->with('success', 'Pembayaran berhasil! Bukti pembayaran diterima.');
-    }
+    //     return redirect()->to('/pemesanan')->with('success', 'Pembayaran berhasil! Bukti pembayaran diterima.');
+    // }
 
     public function token()
     {
@@ -247,7 +247,7 @@ class Keranjang extends BaseController
 
             $modelDetail->insert([
                 'id_p'   => $id_pemesanan,
-                'id_ktg' => $stok['id_ktg'], // ✅ Ambil dari tabel stok
+                'id_ktg' => $stok['id_ktg'],
                 'jenis'  => $item['jenis'],
                 'model'  => $item['model'],
                 'ukuran' => $item['ukuran'],
@@ -256,15 +256,12 @@ class Keranjang extends BaseController
                 'status' => 'Menunggu'
             ]);
 
-            // Update stok
             $stokBaru = $stok['stok'] - 1;
             $stokModel->update($stok['id'], ['stok' => $stokBaru]);
         }
 
-        // Kosongkan keranjang setelah dipesan
         $modelKeranjang->where('id_u', $id_user)->delete();
 
-        // Midtrans token
         $midtrans = new \Config\Midtrans();
         \Midtrans\Config::$serverKey    = $midtrans->serverKey;
         \Midtrans\Config::$isProduction = $midtrans->isProduction;
@@ -323,7 +320,6 @@ class Keranjang extends BaseController
                 'no_hp' => $user['no_hp'],
                 'total' => $gross_amount,
                 'tanggal_pemesanan' => date('Y-m-d H:i:s'),
-                'bukti_pembayaran' => null,
             ]);
 
             $id_pemesanan = $pemesananModel->getInsertID();

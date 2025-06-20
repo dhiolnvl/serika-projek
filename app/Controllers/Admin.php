@@ -58,7 +58,6 @@ class Admin extends BaseController
          pemesanan.id_u,
          pemesanan.nama,
          users.no_hp,
-         pemesanan.bukti_pembayaran,
          pemesanan_detail.status,
          SUM(pemesanan_detail.harga) as total_harga,
          GROUP_CONCAT(CONCAT(

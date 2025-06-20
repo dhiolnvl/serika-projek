@@ -2875,3 +2875,370 @@ DEBUG - 2025-06-20 06:34:56 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-06-20 06:35:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-06-20 06:35:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-06-20 06:35:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:49:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:49:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:49:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-20 06:49:35 --> mysqli_sql_exception: Unknown column 'pemesanan.bukti_pembayaran' in 'field list' in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesan...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesan...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesan...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesan...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Admin->index()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-20 06:49:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+[Method: GET, Route: admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 06:49:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 06:49:35 --> [Caused by] mysqli_sql_exception: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 06:50:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-20 06:50:45 --> mysqli_sql_exception: Unknown column 'pemesanan.bukti_pembayaran' in 'field list' in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesan...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesan...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesan...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesan...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Admin->index()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-20 06:50:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+[Method: GET, Route: admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 06:50:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 06:50:45 --> [Caused by] mysqli_sql_exception: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 06:50:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:50:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-06-20 06:50:48 --> mysqli_sql_exception: Unknown column 'pemesanan.bukti_pembayaran' in 'field list' in C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesan...', 0)
+#1 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesan...')
+#2 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesan...')
+#3 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesan...', Array, false)
+#4 C:\xampp\htdocs\serika-projek\app\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\Admin->index()
+#6 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#7 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\serika-projek\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\serika-projek\vendor\codeigniter4\framework\system\rewrite.php(44): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2025-06-20 06:50:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+[Method: GET, Route: admin]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 2 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 06:50:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 4 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+CRITICAL - 2025-06-20 06:50:48 --> [Caused by] mysqli_sql_exception: Unknown column 'pemesanan.bukti_pembayaran' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN (\'Selesai\',\'Dibatalkan\')
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `pemesanan`.`id_p`, `pemesanan`.`id_u`, `pemesanan`.`nama`, `users`.`no_hp`, `pemesanan`.`bukti_pembayaran`, `pemesanan_detail`.`status`, SUM(pemesanan_detail.harga) as total_harga, GROUP_CONCAT(CONCAT(
+             pemesanan_detail.jenis, " - ", `pemesanan_detail`.`model`, " - ", `pemesanan_detail`.`ukuran`, " - ", `pemesanan_detail`.`lengan`, " - Rp ", pemesanan_detail.harga
+         ) SEPARATOR "|") AS detail_items
+FROM `pemesanan_detail`
+JOIN `pemesanan` ON `pemesanan`.`id_p` = `pemesanan_detail`.`id_p`
+JOIN `users` ON `users`.`id_u` = `pemesanan`.`id_u`
+WHERE `pemesanan_detail`.`status` IN :pemesanan_detail.status:
+GROUP BY `pemesanan`.`id_p`
+ORDER BY `pemesanan`.`id_p` DESC', [...], false)
+ 5 APPPATH\Controllers\Admin.php(79): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\rewrite.php(44): require_once('C:\\xampp\\htdocs\\serika-projek\\public\\index.php')
+DEBUG - 2025-06-20 06:52:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:52:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-06-20 06:52:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
