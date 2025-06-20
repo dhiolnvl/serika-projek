@@ -81,7 +81,8 @@
                         </div>
                         <div class="card-action">
                             <button class="btn btn-success">Submit</button>
-                            <button type="submit" class="btn btn-danger <?= base_url('admin/dataPelanggan') ?>">Cancel</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
+
                         </div>
                     </div>
                 </div>

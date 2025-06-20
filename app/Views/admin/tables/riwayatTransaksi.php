@@ -57,6 +57,7 @@
                                     <tr>
                                         <th>ID Transaksi</th>
                                         <th>ID Pelanggan</th>
+                                        <th>Tanggal</th>
                                         <th>Nama</th>
                                         <th>Detail</th>
                                         <th>Total</th>
@@ -70,6 +71,7 @@
                                             <tr>
                                                 <td><?= esc($row['id_p']) ?></td>
                                                 <td><?= esc($row['id_u']) ?></td>
+                                                <td><?= esc($row['tanggal_pemesanan']) ?></td>
                                                 <td><?= esc($row['nama']) ?></td>
                                                 <td>
                                                     <ul style="padding-left: 1rem;">

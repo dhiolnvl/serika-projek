@@ -18,7 +18,7 @@ class OnlineUserFilter implements FilterInterface
         $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? 'unknown';
         $now = time();
 
-        $db->table('online_users')->where('last_activity <', $now - 180)->delete();
+        $db->table('online_users')->where('last_activity <', $now - 300)->delete();
 
         $existing = $db->table('online_users')
             ->where('ip_address', $ip)

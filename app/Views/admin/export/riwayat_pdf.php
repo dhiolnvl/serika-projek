@@ -35,6 +35,7 @@
 </head>
 
 <body>
+    <h1>BATIK SERIKA</h1>
     <h2>Laporan Riwayat Transaksi</h2>
     <?php if (!empty($bulan)): ?>
         <p><strong>Bulan:</strong> <?= date('F Y', strtotime($bulan . '-01')) ?></p>
