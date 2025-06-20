@@ -18,9 +18,9 @@ class Admin extends BaseController
         $db = \Config\Database::connect();
         $now = time();
 
-        // $onlineUser = $db->table('online_users')
-        //     ->where('last_activity >=', $now - 300)
-        //     ->countAllResults();
+        $onlineUser = $db->table('online_users')
+            ->where('last_activity >=', $now - 300)
+            ->countAllResults();
 
         $pesananBaru = $db->table('pemesanan_detail')
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
@@ -86,42 +86,15 @@ class Admin extends BaseController
             ->getResultArray();
 
         $data['transaksi'] = $query->getResultArray();
-        date_default_timezone_set('Asia/Jakarta');
-        $now = time();
-        $onlineUsers = $db->table('online_users')
-            ->where('last_activity >=', $now - 1800)
-            ->get()->getResultArray();
-
-        $pagi = $siang = $malam = 0;
-
-        foreach ($onlineUsers as $user) {
-            $jam = (int)date('H', $user['last_activity']);
-
-            if ($jam >= 5 && $jam < 12) {
-                $pagi++;
-            } elseif ($jam >= 12 && $jam < 18) {
-                $siang++;
-            } else {
-                $malam++;
-            }
-        }
-
-        $data['onlineUser'] = count($onlineUsers);
-        $data['onlineUserTrend'] = [
-            ['waktu' => 'Pagi', 'jumlah' => $pagi],
-            ['waktu' => 'Siang', 'jumlah' => $siang],
-            ['waktu' => 'Malam', 'jumlah' => $malam],
-        ];
-
 
         return view('admin/dashboard', array_merge([
             'jumlahUser'     => $jumlahUser,
-            'onlineUsers'     => $onlineUsers,
             'pesananBaru'    => $pesananBaru,
             'pesananSelesai' => $pesananSelesai,
             'totalSelesai'   => $totalSelesai,
             'totalPerbulan'   => $totalPerbulan,
             'kategoriList' => $kategoriList,
+            'onlineUser' => $onlineUser,
         ], $data));
     }
 
