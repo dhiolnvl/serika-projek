@@ -40,23 +40,6 @@ class Keranjang extends BaseController
         return view('keranjang/keranjang', $data);
     }
 
-
-    public function simpanDataDiri()
-    {
-        $validation = \Config\Services::validation();
-        if (!$this->validate([
-            'nama' => 'required',
-            'alamat' => 'required',
-        ])) {
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
-
-        session()->set('nama', $this->request->getPost('nama'));
-        session()->set('alamat', $this->request->getPost('alamat'));
-
-        return redirect()->to('/keranjang');
-    }
-
     public function tambah()
     {
         $model = new KeranjangModel();
@@ -230,11 +213,11 @@ class Keranjang extends BaseController
     {
         $id_user = session()->get('id_u');
 
-        $modelKeranjang = new KeranjangModel();
-        $modelPemesanan = new PemesananModel();
-        $modelDetail = new DetailModel();
-        $stokModel = new StokModel();
-        $userModel = new UserModel();
+        $modelKeranjang  = new KeranjangModel();
+        $modelPemesanan  = new PemesananModel();
+        $modelDetail     = new DetailModel();
+        $stokModel       = new StokModel();
+        $userModel       = new UserModel();
 
         $user = $userModel->where('id_u', $id_user)->first();
         $keranjang = $modelKeranjang->where('id_u', $id_user)->findAll();
@@ -243,156 +226,73 @@ class Keranjang extends BaseController
             return $this->response->setJSON(['error' => 'Keranjang kosong.']);
         }
 
-
         $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
-        $order_id = 'ORDER-' . time();
 
         $modelPemesanan->insert([
-            'id_u' => $id_user,
-            'nama' => $user['nama'],
-            'alamat' => $user['alamat'],
-            'no_hp' => $user['no_hp'],
-            'total' => $total,
+            'id_u'               => $id_user,
+            'nama'               => $user['nama'],
+            'alamat'             => $user['alamat'],
+            'no_hp'              => $user['no_hp'],
+            'total'              => $total,
             'tanggal_pemesanan' => date('Y-m-d'),
-            // 'bukti_pembayaran' => null,
-            'order_id' => $order_id
         ]);
 
         $id_pemesanan = $modelPemesanan->getInsertID();
 
         foreach ($keranjang as $item) {
-            $modelDetail->insert([
-                'id_p' => $id_pemesanan,
-                'jenis' => $item['jenis'],
-                'model' => $item['model'],
-                'ukuran' => $item['ukuran'],
-                'lengan' => $item['lengan'],
-                'harga' => $item['harga'],
-                'status' => 'Menunggu',
-                'tanggal_pemesanan' => date('Y-m-d')
-            ]);
-
             $stok = $stokModel->where('jenis', $item['jenis'])->first();
             if (!$stok || $stok['stok'] <= 0) {
-                return $this->response->setJSON(['error' => 'Stok habis untuk jenis: ' . $item['jenis']]);
+                return redirect()->to('/keranjang')->with('error', 'Stok batik jenis ' . $item['jenis'] . ' sedang habis.');
             }
 
+            $modelDetail->insert([
+                'id_p'   => $id_pemesanan,
+                'id_ktg' => $stok['id_ktg'], // ✅ Ambil dari tabel stok
+                'jenis'  => $item['jenis'],
+                'model'  => $item['model'],
+                'ukuran' => $item['ukuran'],
+                'lengan' => $item['lengan'],
+                'harga'  => $item['harga'],
+                'status' => 'Menunggu'
+            ]);
+
+            // Update stok
             $stokBaru = $stok['stok'] - 1;
             $stokModel->update($stok['id'], ['stok' => $stokBaru]);
         }
 
+        // Kosongkan keranjang setelah dipesan
         $modelKeranjang->where('id_u', $id_user)->delete();
 
+        // Midtrans token
         $midtrans = new \Config\Midtrans();
-        \Midtrans\Config::$serverKey = $midtrans->serverKey;
+        \Midtrans\Config::$serverKey    = $midtrans->serverKey;
         \Midtrans\Config::$isProduction = $midtrans->isProduction;
-        \Midtrans\Config::$isSanitized = $midtrans->isSanitized;
-        \Midtrans\Config::$is3ds = $midtrans->is3ds;
+        \Midtrans\Config::$isSanitized  = $midtrans->isSanitized;
+        \Midtrans\Config::$is3ds        = $midtrans->is3ds;
 
+        $order_id = 'ORDER-' . time();
         $params = [
             'transaction_details' => [
-                'order_id' => $order_id,
+                'order_id'     => $order_id,
                 'gross_amount' => $total,
             ],
             'customer_details' => [
                 'first_name' => $user['nama'],
-                'email' => $user['email'] ?? 'default@email.com',
-                'phone' => $user['no_hp'],
+                'email'      => $user['email'] ?? 'customer@email.com',
+                'phone'      => $user['no_hp'],
             ],
         ];
-
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         session()->set([
-            'order_id' => $order_id,
+            'order_id'    => $order_id,
             'total_bayar' => $total
         ]);
+
         return $this->response->setJSON(['token' => $snapToken]);
     }
-
-
-
-    // public function bayar()
-    // {
-    //     $id_user = session()->get('id_u');
-
-    // $modelKeranjang = new KeranjangModel();
-    // $modelPemesanan = new PemesananModel();
-    // $modelDetail = new DetailModel();
-    // $stokModel = new StokModel();
-    // $userModel = new UserModel();
-
-    //     $user = $userModel->where('id_u', $id_user)->first();
-    //     $keranjang = $modelKeranjang->where('id_u', $id_user)->findAll();
-
-    //     if (empty($keranjang)) {
-    //         return $this->response->setJSON(['error' => 'Keranjang kosong']);
-    //     }
-
-    //     $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
-
-    //     $midtrans = new MidtransSettings();
-    //     MidtransConfig::$serverKey = $midtrans->serverKey;
-    //     MidtransConfig::$isProduction = $midtrans->isProduction;
-    //     MidtransConfig::$isSanitized = $midtrans->isSanitized;
-    //     MidtransConfig::$is3ds = $midtrans->is3ds;
-
-    //     $order_id = 'ORDER-' . time();
-
-    // $modelPemesanan->insert([
-    //     'id_u' => $id_user,
-    //     'nama' => $user['nama'],
-    //     'alamat' => $user['alamat'],
-    //     'no_hp' => $user['no_hp'],
-    //     'total' => $total,
-    //     'tanggal_pemesanan' => date('Y-m-d'),
-    //     'bukti_pembayaran' => null,
-    //     'order_id' => $order_id
-    // ]);
-
-    // $id_pemesanan = $modelPemesanan->getInsertID();
-
-    // foreach ($keranjang as $item) {
-    //     $modelDetail->insert([
-    //         'id_p' => $id_pemesanan,
-    //         'jenis' => $item['jenis'],
-    //         'model' => $item['model'],
-    //         'ukuran' => $item['ukuran'],
-    //         'lengan' => $item['lengan'],
-    //         'harga' => $item['harga'],
-    //         'status' => 'Menunggu',
-    //         'tanggal_pemesanan' => date('Y-m-d')
-    //     ]);
-
-    //     $stok = $stokModel->where('jenis', $item['jenis'])->first();
-    //     if (!$stok || $stok['stok'] <= 0) {
-    //         return $this->response->setJSON(['error' => 'Stok habis untuk jenis: ' . $item['jenis']]);
-    //     }
-
-    //     $stokBaru = $stok['stok'] - 1;
-    //     $stokModel->update($stok['id'], ['stok' => $stokBaru]);
-    // }
-
-    // $modelKeranjang->where('id_u', $id_user)->delete();
-
-    //     $params = [
-    //         'transaction_details' => [
-    //             'order_id' => $order_id,
-    //             'gross_amount' => $total,
-    //         ],
-    //         'customer_details' => [
-    //             'first_name' => $user['nama'],
-    //             'email' => $user['email'] ?? 'dhiolinoval@gmail.com',
-    //             'phone' => $user['no_hp'],
-    //         ],
-    //     ];
-
-    //     $snapToken = Snap::getSnapToken($params);
-
-    //     return $this->response->setJSON(['token' => $snapToken]);
-    // }
-
 
     public function notification()
     {

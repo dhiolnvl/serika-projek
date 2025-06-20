@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2025 at 07:11 AM
+-- Generation Time: Jun 20, 2025 at 08:30 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -86,8 +86,9 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`id_k`, `id_u`, `jenis`, `model`, `ukuran`, `lengan`, `harga`) VALUES
-(111, 25, 'Batik 3', 'Model 3', '3XL', 'Lengan Panjang', 130000),
-(112, 12, 'Batik 1', 'Model 1', 'S', 'Lengan Panjang', 100000);
+(112, 12, 'Batik 1', 'Model 1', 'S', 'Lengan Panjang', 100000),
+(114, 31, 'Batik 4', 'Model 3', 'L', 'Lengan Panjang', 115000),
+(115, 25, 'Batik 3', 'Model 1', 'L', 'Lengan Panjang', 110000);
 
 -- --------------------------------------------------------
 
@@ -107,7 +108,7 @@ CREATE TABLE `online_users` (
 --
 
 INSERT INTO `online_users` (`id`, `ip_address`, `user_agent`, `last_activity`) VALUES
-(90, '192.168.10.192', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 1750307956);
+(114, '192.168.10.192', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36', 1750400645);
 
 -- --------------------------------------------------------
 
@@ -122,25 +123,31 @@ CREATE TABLE `pemesanan` (
   `alamat` text DEFAULT NULL,
   `no_hp` varchar(20) DEFAULT NULL,
   `total` int(11) DEFAULT NULL,
-  `tanggal_pemesanan` date DEFAULT NULL,
-  `bukti_pembayaran` varchar(100) NOT NULL
+  `tanggal_pemesanan` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `pemesanan`
 --
 
-INSERT INTO `pemesanan` (`id_p`, `id_u`, `nama`, `alamat`, `no_hp`, `total`, `tanggal_pemesanan`, `bukti_pembayaran`) VALUES
-(35, 23, 'abdul', 'pemalang', '094934738', 110000, '2025-05-09', '1746758203_87e1a7dd6cbb712d0877.png'),
-(43, 12, 'Fina', 'Landungsari', '0849384938', 100000, '2025-05-26', '1748230596_fdd4e3fa81e36a4881f6.jpg'),
-(44, 24, 'Pratama', 'Yosorejo', '0893489384344', 110000, '2025-05-30', '1748602739_f8dfc2dc47c4afa99936.jpg'),
-(45, 25, 'dhio', 'Yosorejo', '084938943843', 100000, '2025-05-30', '1748605896_2e78d0e7d78a86779e82.jpg'),
-(46, 12, 'Fina', 'Landungsari', '0849384938', 100000, '2025-06-10', '1749532588_e3daae6e81d218673c59.png'),
-(47, 12, 'Fina', 'Landungsari', '0849384938', 115000, '2025-06-10', '1749545623_ca63f703c3e3f67303a2.png'),
-(48, 29, 'Meli', 'Landungsari', '085720174322', 230000, '2025-06-12', '1749702336_2db92b3a4f4fbb28ef35.png'),
-(49, 30, 'asd', 'asd', '6287387238', 100000, '2025-06-13', '1749787507_e3ac7e013ae35f7fb475.jpg'),
-(50, 25, 'dhio', 'Yosorejo', '084938943843', 100000, '2025-06-13', '1749807649_bfe4b1c4b0aa8c111312.png'),
-(51, 25, 'dhio', 'Yosorejo', '084938943843', 110000, '2025-06-13', '1749818700_1e214eae9469a332a881.png');
+INSERT INTO `pemesanan` (`id_p`, `id_u`, `nama`, `alamat`, `no_hp`, `total`, `tanggal_pemesanan`) VALUES
+(35, 23, 'abdul', 'pemalang', '094934738', 110000, '2025-05-09'),
+(43, 12, 'Fina', 'Landungsari', '0849384938', 100000, '2025-05-26'),
+(44, 24, 'Pratama', 'Yosorejo', '0893489384344', 110000, '2025-05-30'),
+(45, 25, 'dhio', 'Yosorejo', '084938943843', 100000, '2025-05-30'),
+(46, 12, 'Fina', 'Landungsari', '0849384938', 100000, '2025-06-10'),
+(47, 12, 'Fina', 'Landungsari', '0849384938', 115000, '2025-06-10'),
+(48, 29, 'Meli', 'Landungsari', '085720174322', 230000, '2025-06-12'),
+(49, 30, 'asd', 'asd', '6287387238', 100000, '2025-06-13'),
+(50, 25, 'dhio', 'Yosorejo', '084938943843', 100000, '2025-06-13'),
+(51, 25, 'dhio', 'Yosorejo', '084938943843', 110000, '2025-06-13'),
+(59, 25, 'dhiooo', 'Yosorejoo', '6289537911962', 130000, '2025-06-19'),
+(82, 25, 'dhiooo', 'Yosorejoo', '6289537911962', 110000, '2025-06-20'),
+(83, 25, 'dhiooo', 'Yosorejoo', '6289537911962', 110000, '2025-06-20'),
+(84, 25, 'dhiooo', 'Yosorejoo', '6289537911962', 110000, '2025-06-20'),
+(85, 25, 'dhiooo', 'Yosorejoo', '6289537911962', 110000, '2025-06-20'),
+(86, 25, 'dhiooo', 'Yosorejoo', '6289537911962', 110000, '2025-06-20'),
+(87, 25, 'dhiooo', 'Yosorejoo', '6289537911962', 110000, '2025-06-20');
 
 -- --------------------------------------------------------
 
@@ -151,6 +158,7 @@ INSERT INTO `pemesanan` (`id_p`, `id_u`, `nama`, `alamat`, `no_hp`, `total`, `ta
 CREATE TABLE `pemesanan_detail` (
   `id_detail` int(11) NOT NULL,
   `id_p` int(11) NOT NULL,
+  `id_ktg` int(11) NOT NULL,
   `jenis` varchar(100) DEFAULT NULL,
   `model` varchar(100) DEFAULT NULL,
   `ukuran` varchar(50) DEFAULT NULL,
@@ -163,18 +171,19 @@ CREATE TABLE `pemesanan_detail` (
 -- Dumping data for table `pemesanan_detail`
 --
 
-INSERT INTO `pemesanan_detail` (`id_detail`, `id_p`, `jenis`, `model`, `ukuran`, `lengan`, `harga`, `status`) VALUES
-(43, 35, 'Batik 1', 'Model 1', 'XL', 'Lengan Panjang', 110000, 'Dibatalkan'),
-(52, 43, 'Batik 1', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Menunggu'),
-(53, 44, 'Batik 4', 'Model 1', 'L', 'Lengan Panjang', 110000, 'Selesai'),
-(54, 45, 'Batik 1', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Dibatalkan'),
-(55, 46, 'Batik 2', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Selesai'),
-(56, 47, 'Batik 1', 'Model 1', '5XL', 'Lengan Panjang', 115000, 'Selesai'),
-(57, 48, 'Batik 2', 'Model 3', 'L', 'Lengan Panjang', 105000, 'Selesai'),
-(58, 48, 'Batik 4', 'Model 4', 'XL', 'Lengan Panjang', 125000, 'Selesai'),
-(59, 49, 'Batik 1', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Selesai'),
-(60, 50, 'Batik 2', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Menunggu'),
-(61, 51, 'Batik 1', 'Model 1', 'XL', 'Lengan Panjang', 110000, 'Selesai');
+INSERT INTO `pemesanan_detail` (`id_detail`, `id_p`, `id_ktg`, `jenis`, `model`, `ukuran`, `lengan`, `harga`, `status`) VALUES
+(43, 35, 2, 'Batik 1', 'Model 1', 'XL', 'Lengan Panjang', 110000, 'Dibatalkan'),
+(52, 43, 2, 'Batik 1', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Menunggu'),
+(53, 44, 3, 'Batik 4', 'Model 1', 'L', 'Lengan Panjang', 110000, 'Selesai'),
+(54, 45, 2, 'Batik 1', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Dibatalkan'),
+(55, 46, 2, 'Batik 2', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Selesai'),
+(56, 47, 2, 'Batik 1', 'Model 1', '5XL', 'Lengan Panjang', 115000, 'Selesai'),
+(57, 48, 2, 'Batik 2', 'Model 3', 'L', 'Lengan Panjang', 105000, 'Selesai'),
+(58, 48, 3, 'Batik 4', 'Model 4', 'XL', 'Lengan Panjang', 125000, 'Selesai'),
+(59, 49, 2, 'Batik 1', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Selesai'),
+(60, 50, 2, 'Batik 2', 'Model 1', 'L', 'Lengan Panjang', 100000, 'Menunggu'),
+(61, 51, 2, 'Batik 1', 'Model 1', 'XL', 'Lengan Panjang', 110000, 'Selesai'),
+(68, 59, 3, 'Batik 3', 'Model 3', '3XL', 'Lengan Panjang', 130000, 'Menunggu');
 
 -- --------------------------------------------------------
 
@@ -197,7 +206,7 @@ CREATE TABLE `stok` (
 INSERT INTO `stok` (`id`, `jenis`, `gambar`, `stok`, `id_ktg`) VALUES
 (1, 'Batik 1', 'jenis1.jpg', 5, 2),
 (2, 'Batik 2', 'jenis2.jpg', 10, 2),
-(3, 'Batik 3', 'jenis3.jpg', 6, 3),
+(3, 'Batik 3', 'jenis3.jpg', 5, 3),
 (4, 'Batik 4', 'jenis4.jpg', 2, 3),
 (5, 'Request Batik', '1750148758_e8b010a9d541f2974555.png', 98, 4);
 
@@ -230,7 +239,8 @@ INSERT INTO `users` (`id_u`, `username`, `password`, `nama`, `alamat`, `no_hp`, 
 (24, 'pratama', '$2y$10$eYj1WgoPL3fq0IsEqx/VbOnXkz9sV2bX9VoVTV0Pm7UvvDbpLuwZK', 'Pratama', 'Yosorejo', '0893489384344', 'user', 'Aktif'),
 (25, 'dhio', '$2y$10$PDFOKt8JhEFeRWgAWQ1v3.n.mI6mrFz8kdqCMe48y9tqnKlDgmX3W', 'dhiooo', 'Yosorejoo', '6289537911962', 'user', 'Aktif'),
 (29, 'meli', '$2y$10$iqc.N5vmpSHcYQ6evTr6jeXo2PACkvkXkxz09jsk6F2VqJqAQV2IC', 'Meli', 'Landungsari', '6285720174322', 'user', 'Aktif'),
-(30, 'asd', '$2y$10$vXoteuK1XUkr7cJ2rONkSeEQn41HZgFvoK5OZA2HgAk.D9pfIifYa', 'asd', 'asd', '6287387238', 'user', 'Aktif');
+(30, 'asd', '$2y$10$vXoteuK1XUkr7cJ2rONkSeEQn41HZgFvoK5OZA2HgAk.D9pfIifYa', 'asd', 'asd', '6287387238', 'user', 'Aktif'),
+(31, 'al', '$2y$10$W7Ihttq2fd8JW0u3V.S9quRa2jBHu0U5rfTiq6OCZglLihr0HtmWi', 'al', 'pekalongan', '62893893483', 'user', 'Aktif');
 
 --
 -- Indexes for dumped tables
@@ -273,7 +283,8 @@ ALTER TABLE `pemesanan`
 --
 ALTER TABLE `pemesanan_detail`
   ADD PRIMARY KEY (`id_detail`),
-  ADD KEY `id_p` (`id_p`);
+  ADD KEY `id_p` (`id_p`),
+  ADD KEY `id_ktg` (`id_ktg`);
 
 --
 -- Indexes for table `stok`
@@ -309,25 +320,25 @@ ALTER TABLE `kategori`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id_k` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id_k` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 
 --
 -- AUTO_INCREMENT for table `online_users`
 --
 ALTER TABLE `online_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `pemesanan`
 --
 ALTER TABLE `pemesanan`
-  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `pemesanan_detail`
 --
 ALTER TABLE `pemesanan_detail`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `stok`
@@ -339,7 +350,7 @@ ALTER TABLE `stok`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_u` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Constraints for dumped tables
@@ -361,7 +372,8 @@ ALTER TABLE `pemesanan`
 -- Constraints for table `pemesanan_detail`
 --
 ALTER TABLE `pemesanan_detail`
-  ADD CONSTRAINT `pemesanan_detail_ibfk_1` FOREIGN KEY (`id_p`) REFERENCES `pemesanan` (`id_p`) ON DELETE CASCADE;
+  ADD CONSTRAINT `pemesanan_detail_ibfk_1` FOREIGN KEY (`id_p`) REFERENCES `pemesanan` (`id_p`) ON DELETE CASCADE,
+  ADD CONSTRAINT `pemesanan_detail_ibfk_2` FOREIGN KEY (`id_ktg`) REFERENCES `kategori` (`id_ktg`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `stok`

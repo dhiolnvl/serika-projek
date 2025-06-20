@@ -90,8 +90,8 @@ $routes->group('', ['filter' => 'admin:admin'], function ($routes) {
 
 $routes->group('', ['filter' => 'user:user'], function ($routes) {
     $routes->get('/keranjang', 'Keranjang::index');
-    $routes->post('/keranjang/bayar', 'Keranjang::bayar');
     $routes->get('/pemesanan', 'Pemesanan::index');
+    $routes->get('/keranjang/token', 'Keranjang::token');
 });
 
 $routes->get('/admin/stok', 'Admin::stok');
@@ -103,7 +103,6 @@ $routes->get('/admin/deleteStok/(:num)', 'Admin::deleteStok/$1');
 
 $routes->get('/unauth', 'Home::unauth');
 
-$routes->get('/keranjang/token', 'Keranjang::token');
 $routes->post('/keranjang/notification', 'Keranjang::notification');
 
 $routes->get('/transaksi/cetakPdf', 'Transaksi::cetakPdf');
