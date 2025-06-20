@@ -83,7 +83,7 @@
             </div>
           </div>
           <div class="card-body">
-            <div class="chart-container" style="min-height: 420px;">
+            <div class="chart-container" style="min-height: 650px;">
               <canvas id="statisticsChart"></canvas>
             </div>
           </div>
@@ -106,14 +106,17 @@
         </div>
         <div class="card card-round">
           <div class="card-body pb-0">
-            <div class="h1 fw-bold float-end text-primary"></div>
+            <div class="h1 fw-bold float-end text-primary">
+              <i class="fas fa-user-clock"></i>
+            </div>
             <h2 class="mb-2"><?= $onlineUser ?></h2>
-            <p class="text-muted">Users online</p>
-            <div class="pull-in sparkline-fix">
-              <div id="lineChart"></div>
+            <p class="text-muted">Users Online</p>
+            <div class="chart-container" style="height: 100px;">
+              <canvas id="onlineUserChart"></canvas>
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <div class="container">
@@ -248,6 +251,54 @@
         }
       });
     </script>
+
+    <!-- UNTUK USER ONLINE -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const onlineCtx = document.getElementById('onlineUserChart').getContext('2d');
+
+        const onlineUserChart = new Chart(onlineCtx, {
+          type: 'doughnut',
+          data: {
+            labels: <?= json_encode(array_column($onlineUserTrend, 'waktu')) ?>,
+            datasets: [{
+              data: <?= json_encode(array_column($onlineUserTrend, 'jumlah')) ?>,
+              backgroundColor: ['#36a2eb', '#ffcd56', '#ff6384'],
+              borderColor: ['#ffffff', '#ffffff', '#ffffff'],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                labels: {
+                  boxWidth: 12,
+                  color: '#333',
+                  font: {
+                    size: 13
+                  }
+                }
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const label = context.label || '';
+                    const value = context.raw || 0;
+                    return `${label}: ${value} pengguna`;
+                  }
+                }
+              }
+            },
+            cutout: '70%'
+          }
+        });
+      });
+    </script>
+
   </div>
 </div>
 <!--   Core JS Files   -->
