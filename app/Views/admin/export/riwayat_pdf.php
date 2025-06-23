@@ -45,16 +45,27 @@
 
 <body>
     <div class="header">
+        <img src="<?= FCPATH . 'logo.png' ?>" alt="Logo">
         <h1>BATIK SERIKA</h1>
         <h2>Laporan Riwayat Transaksi</h2>
     </div>
 
-    <?php if (!empty($bulan)): ?>
-        <p><strong>Bulan:</strong> <?= date('F Y', strtotime($bulan . '-01')) ?></p>
+    <?php if (!empty($tanggal)): ?>
+        <p><strong>Tanggal:</strong> <?= date('d-m-Y', strtotime($tanggal)) ?></p>
     <?php endif; ?>
     <?php if (!empty($kategori)): ?>
-        <p><strong>Kategori:</strong> <?= $kategori ?></p>
+        <?php
+        $kategoriNama = '';
+        foreach ($kategoriList as $k) {
+            if ($k['id_ktg'] == $kategori) {
+                $kategoriNama = $k['kategori'];
+                break;
+            }
+        }
+        ?>
+        <p><strong>Kategori:</strong> <?= $kategoriNama ?></p>
     <?php endif; ?>
+
 
     <table>
         <thead>
