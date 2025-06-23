@@ -10,9 +10,18 @@
             font-size: 12px;
         }
 
-        h2 {
+        .header {
             text-align: center;
             margin-bottom: 10px;
+        }
+
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+
+        h2 {
+            margin: 5px 0;
         }
 
         table {
@@ -35,8 +44,11 @@
 </head>
 
 <body>
-    <h1>BATIK SERIKA</h1>
-    <h2>Laporan Riwayat Transaksi</h2>
+    <div class="header">
+        <h1>BATIK SERIKA</h1>
+        <h2>Laporan Riwayat Transaksi</h2>
+    </div>
+
     <?php if (!empty($bulan)): ?>
         <p><strong>Bulan:</strong> <?= date('F Y', strtotime($bulan . '-01')) ?></p>
     <?php endif; ?>
@@ -78,6 +90,13 @@
 
     <div class="summary">
         <p><strong>Total Penjualan (Selesai):</strong> Rp <?= number_format($totalSelesai, 0, ',', '.') ?></p>
+
+        <?php
+        $totalItemKeseluruhan = array_sum(array_column($kategoriList, 'jumlah'));
+        ?>
+
+        <p><strong>Total Item Terjual:</strong> <?= $totalItemKeseluruhan ?> item</p>
+
         <p><strong>Rekap per Kategori:</strong></p>
         <ul>
             <?php foreach ($kategoriList as $k): ?>
