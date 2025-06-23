@@ -49,8 +49,10 @@ class Keranjang extends BaseController
         $model_batik = $this->request->getPost('model');
         $ukuran = $this->request->getPost('ukuran');
         $lengan = $this->request->getPost('lengan');
+        $jumlah = (int) $this->request->getPost('jumlah');
 
-        $harga = $this->hitungHarga($jenis, $model_batik, $ukuran, $lengan);
+        $hargaSatuan = $this->hitungHarga($jenis, $model_batik, $ukuran, $lengan);
+        $totalHarga = $hargaSatuan * $jumlah;
 
         $model->insert([
             'id_u' => $id_user,
@@ -58,7 +60,8 @@ class Keranjang extends BaseController
             'model' => $model_batik,
             'ukuran' => $ukuran,
             'lengan' => $lengan,
-            'harga' => $harga,
+            'jumlah' => $jumlah,
+            'harga' => $totalHarga,
         ]);
 
         return redirect()->to('/keranjang')->with('success', 'Produk berhasil ditambahkan ke keranjang!');
@@ -121,11 +124,19 @@ class Keranjang extends BaseController
     public function checkout()
     {
         $model = new KeranjangModel();
+        $stokModel = new \App\Models\StokModel();
         $id_user = session()->get('id_u');
 
         $keranjang = $model->where('id_u', $id_user)->findAll();
         if (empty($keranjang)) {
             return redirect()->to('/keranjang')->with('error', 'Keranjang kosong.');
+        }
+
+        foreach ($keranjang as $item) {
+            $stok = $stokModel->where('jenis', $item['jenis'])->first();
+            if (!$stok || $item['jumlah'] > $stok['stok']) {
+                return redirect()->to('/keranjang')->with('error', "Stok untuk {$item['jenis']} tidak mencukupi.");
+            }
         }
 
         $userModel = new UserModel();
@@ -229,11 +240,12 @@ class Keranjang extends BaseController
         $total = array_sum(array_map(fn($item) => (int) $item['harga'], $keranjang));
 
         $modelPemesanan->insert([
-            'id_u'               => $id_user,
-            'nama'               => $user['nama'],
-            'alamat'             => $user['alamat'],
-            'no_hp'              => $user['no_hp'],
-            'total'              => $total,
+            'id_u'      => $id_user,
+            'nama'      => $user['nama'],
+            'alamat'    => $user['alamat'],
+            'no_hp'     => $user['no_hp'],
+            'jumlah'    => $user['jumlah'] ?? 0,
+            'total'     => $total,
             'tanggal_pemesanan' => date('Y-m-d'),
         ]);
 
@@ -241,9 +253,6 @@ class Keranjang extends BaseController
 
         foreach ($keranjang as $item) {
             $stok = $stokModel->where('jenis', $item['jenis'])->first();
-            if (!$stok || $stok['stok'] <= 0) {
-                return redirect()->to('/keranjang')->with('error', 'Stok batik jenis ' . $item['jenis'] . ' sedang habis.');
-            }
 
             $modelDetail->insert([
                 'id_p'   => $id_pemesanan,
@@ -252,16 +261,19 @@ class Keranjang extends BaseController
                 'model'  => $item['model'],
                 'ukuran' => $item['ukuran'],
                 'lengan' => $item['lengan'],
+                'jumlah' => $item['jumlah'],
                 'harga'  => $item['harga'],
                 'status' => 'Menunggu'
             ]);
 
-            $stokBaru = $stok['stok'] - 1;
+            // Update stok langsung tanpa validasi
+            $stokBaru = $stok['stok'] - $item['jumlah'];
             $stokModel->update($stok['id'], ['stok' => $stokBaru]);
         }
 
         $modelKeranjang->where('id_u', $id_user)->delete();
 
+        // Midtrans Config
         $midtrans = new \Config\Midtrans();
         \Midtrans\Config::$serverKey    = $midtrans->serverKey;
         \Midtrans\Config::$isProduction = $midtrans->isProduction;

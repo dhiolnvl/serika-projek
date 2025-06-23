@@ -11,7 +11,6 @@ class Admin extends BaseController
 {
     public function index()
     {
-
         $userModel = new UserModel();
         $jumlahUser = $userModel->countAll();
 
@@ -37,14 +36,14 @@ class Admin extends BaseController
             ->getNumRows();
 
         $totalSelesai = $db->table('pemesanan_detail')
-            ->selectSum('harga')
+            ->select('SUM(harga * jumlah) AS total')
             ->where('status', 'Selesai')
             ->get()
             ->getRow()
-            ->harga;
+            ->total;
 
         $totalPerbulan = $db->table('pemesanan_detail')
-            ->select("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') AS bulan, SUM(pemesanan_detail.harga) AS total")
+            ->select("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') AS bulan, SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) AS total")
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->whereIn('pemesanan_detail.status', ['Selesai'])
             ->groupBy("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m')")
@@ -55,18 +54,19 @@ class Admin extends BaseController
         $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
-         pemesanan.id_u,
-         pemesanan.nama,
-         users.no_hp,
-         pemesanan_detail.status,
-         SUM(pemesanan_detail.harga) as total_harga,
-         GROUP_CONCAT(CONCAT(
-             pemesanan_detail.jenis, " - ",
-             pemesanan_detail.model, " - ",
-             pemesanan_detail.ukuran, " - ",
-             pemesanan_detail.lengan, " - Rp ",
-             pemesanan_detail.harga
-         ) SEPARATOR "|") AS detail_items'
+                 pemesanan.id_u,
+                 pemesanan.nama,
+                 users.no_hp,
+                 pemesanan_detail.status,
+                 SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) as total_harga,
+                 GROUP_CONCAT(CONCAT(
+                     pemesanan_detail.jenis, " - ",
+                     pemesanan_detail.model, " - ",
+                     pemesanan_detail.ukuran, " - ",
+                     pemesanan_detail.lengan, " - Jumlah: ",
+                     pemesanan_detail.jumlah, " - Rp ",
+                     pemesanan_detail.harga
+                 ) SEPARATOR "|") AS detail_items'
             )
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->join('users', 'users.id_u = pemesanan.id_u')
@@ -78,12 +78,13 @@ class Admin extends BaseController
             ->get();
 
         $kategoriList = $db->table('pemesanan_detail')
-            ->select('kategori.kategori, COUNT(*) as jumlah')
+            ->select('kategori.kategori, SUM(pemesanan_detail.jumlah) as jumlah')
             ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
             ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan'])
             ->groupBy('kategori.kategori')
             ->get()
             ->getResultArray();
+
 
         $data['transaksi'] = $query->getResultArray();
 
@@ -92,9 +93,9 @@ class Admin extends BaseController
             'pesananBaru'    => $pesananBaru,
             'pesananSelesai' => $pesananSelesai,
             'totalSelesai'   => $totalSelesai,
-            'totalPerbulan'   => $totalPerbulan,
-            'kategoriList' => $kategoriList,
-            'onlineUser' => $onlineUser,
+            'totalPerbulan'  => $totalPerbulan,
+            'kategoriList'   => $kategoriList,
+            'onlineUser'     => $onlineUser,
         ], $data));
     }
 
@@ -265,9 +266,6 @@ class Admin extends BaseController
         $builder->select('stok.*, kategori.kategori');
         $builder->join('kategori', 'kategori.id_ktg = stok.id_ktg');
         $query = $builder->get();
-
-        // $StokModel = new StokModel();
-        // $data['stoks'] = $StokModel->findAll();
 
         $data['stoks'] = $query->getResultArray();
 

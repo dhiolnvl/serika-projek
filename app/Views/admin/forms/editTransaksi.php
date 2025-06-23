@@ -82,6 +82,10 @@
                         <input type="text" name="lengan[]" class="form-control" value="<?= esc($detail['lengan']) ?>" required />
                       </div>
                       <div class="col-md-2">
+                        <label>Jumlah</label>
+                        <input type="number" name="jumlah[]" class="form-control" value="<?= esc($detail['jumlah']) ?>" required />
+                      </div>
+                      <div class="col-md-2">
                         <label>Harga</label>
                         <input type="number" name="harga[]" class="form-control" value="<?= esc($detail['harga']) ?>" required />
                       </div>

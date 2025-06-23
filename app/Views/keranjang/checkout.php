@@ -44,6 +44,7 @@
                     <th>Model</th>
                     <th>Ukuran</th>
                     <th>Lengan</th>
+                    <th>Jumlah</th>
                     <th>Harga</th>
                 </tr>
             </thead>
@@ -54,11 +55,12 @@
                         <td><?= esc($item['model']) ?></td>
                         <td><?= esc($item['ukuran']) ?></td>
                         <td><?= esc($item['lengan']) ?></td>
+                        <td><?= esc($item['jumlah']) ?></td>
                         <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
                     </tr>
                 <?php endforeach; ?>
                 <tr>
-                    <th colspan="4" class="text-end">Total</th>
+                    <th colspan="5" class="text-end">Total</th>
                     <th>Rp <?= number_format($total, 0, ',', '.') ?></th>
                 </tr>
             </tbody>

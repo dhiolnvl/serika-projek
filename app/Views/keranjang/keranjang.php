@@ -101,10 +101,15 @@
                 </div>
             </div>
 
+            <div class="mb-3">
+                <label for="jumlah" class="form-label">Jumlah:</label>
+                <input type="number" name="jumlah" id="jumlah" class="form-control" min="1" value="1" required>
+            </div>
+
+
             <div class="text-center mb-4">
                 <h6>Panduan Ukuran:</h6>
-                <img src="<?= base_url('images/size1.jpg') ?>" alt="Panduan Ukuran Batik" class="img-fluid" style="max-width:400px;">
-
+                <a href="<?= base_url('images/size1.jpg') ?>">Lihat</a>
             </div>
 
             <div class="d-grid">
@@ -123,6 +128,7 @@
                         <th>Model</th>
                         <th>Ukuran</th>
                         <th>Lengan</th>
+                        <th>Jumlah</th>
                         <th>Harga</th>
                         <th>Aksi</th>
                     </tr>
@@ -135,6 +141,7 @@
                             <td><?= esc($item['model']) ?></td>
                             <td><?= esc($item['ukuran']) ?></td>
                             <td><?= esc($item['lengan']) ?></td>
+                            <td><?= esc($item['jumlah']) ?></td>
                             <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
                             <td class="text-center">
                                 <a href="<?= base_url("keranjang/hapus/" . $item['id_k']) ?>" class="btn btn-danger btn-sm">Hapus</a>

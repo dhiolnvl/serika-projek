@@ -24,7 +24,7 @@
               </div>
               <div class="col col-stats ms-3 ms-sm-0">
                 <div class="numbers">
-                  <p class="card-category">Users</p>
+                  <a class="card-category" href="<?= base_url("/admin/dataPelanggan") ?>">Users</a>
                   <h4 class="card-title"><?= $jumlahUser ?></h4>
                 </div>
               </div>
@@ -45,7 +45,7 @@
               </div>
               <div class="col col-stats ms-3 ms-sm-0">
                 <div class="numbers">
-                  <p class="card-category">Pemesanan proses</p>
+                  <a class="card-category" href="<?= base_url("/admin/dataTransaksi") ?>">Pemesanan proses</a>
                   <h4 class="card-title"><?= $pesananBaru ?></h4>
                 </div>
               </div>
@@ -65,7 +65,7 @@
               </div>
               <div class="col col-stats ms-3 ms-sm-0">
                 <div class="numbers">
-                  <p class="card-category">Pemesanan selesai</p>
+                  <a class="card-category" href="<?= base_url("/admin/dataRiwayat") ?>">Pemesanan selesai</a>
                   <h4 class="card-title"><?= $pesananSelesai ?></h4>
                 </div>
               </div>

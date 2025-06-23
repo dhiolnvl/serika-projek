@@ -15,6 +15,7 @@ class DetailModel extends Model
         'model',
         'ukuran',
         'lengan',
+        'jumlah',
         'harga',
         'status'
     ];

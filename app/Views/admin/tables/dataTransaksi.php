@@ -27,8 +27,8 @@
               <form method="GET" class="mb-3">
                 <div class="row">
                   <div class="col-md-3">
-                    <label for="bulan">Filter Bulan:</label>
-                    <input type="month" id="bulan" name="bulan" class="form-control" value="<?= esc($_GET['bulan'] ?? '') ?>">
+                    <label for="bulan">Filter Tanggal:</label>
+                    <input type="date" id="tanggal" name="tanggal" class="form-control" value="<?= esc($_GET['tanggal'] ?? '') ?>">
                   </div>
                   <div class="col-md-3 align-self-end">
                     <button type="submit" class="btn btn-primary">Filter</button>
