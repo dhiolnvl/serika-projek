@@ -35,6 +35,10 @@
     <div class="card shadow p-4">
         <h2 class="mb-4 text-center">Form Pemesanan Batik</h2>
         <div class="mb-4">
+            <h6>Panduan Ukuran:</h6>
+            <a href="<?= base_url('images/size1.jpg') ?>">Lihat</a>
+        </div>
+        <div class="mb-4">
             <select id="filterKategori" class="form-select">
                 <option value="">-- Kategori Batik --</option>
                 <?php foreach ($kategori as $ktg): ?>
@@ -104,12 +108,6 @@
             <div class="mb-3">
                 <label for="jumlah" class="form-label">Jumlah:</label>
                 <input type="number" name="jumlah" id="jumlah" class="form-control" min="1" value="1" required>
-            </div>
-
-
-            <div class="text-center mb-4">
-                <h6>Panduan Ukuran:</h6>
-                <a href="<?= base_url('images/size1.jpg') ?>">Lihat</a>
             </div>
 
             <div class="d-grid">
