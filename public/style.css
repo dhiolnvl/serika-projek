@@ -2562,3 +2562,42 @@ footer#footer {
 .btn-eye:hover {
   background-color: #f5f3e6;
 }
+
+@media (max-width: 991.98px) {
+  .sidebar {
+    position: fixed;
+    z-index: 1030;
+    left: -260px;
+    top: 0;
+    height: 100%;
+    width: 260px;
+    background: #1a1f36;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.active {
+    left: 0;
+  }
+
+  .main-panel {
+    padding-left: 0;
+  }
+
+  .main-header .logo-header {
+    background-color: white !important;
+  }
+
+  .navbar-header {
+    background-color: white !important;
+  }
+
+  .nav-toggle .btn i {
+    color: #ffffff;
+  }
+
+  @media (max-width: 991.98px) {
+    .nav-toggle .btn i {
+      color: #000000;
+    }
+  }
+}

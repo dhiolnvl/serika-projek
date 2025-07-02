@@ -7,11 +7,10 @@
   <meta
     content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     name="viewport" />
-  <!-- <link
-      rel="icon"
-      href="assets/img/kaiadmin/favicon.ico"
-      type="image/x-icon"
-    /> -->
+  <link
+    rel="icon"
+    href="<?= base_url(relativePath: "/images/logo2.jpg") ?>"
+    type="image/x-icon" />
 
   <!-- Fonts and icons -->
   <script src="<?= base_url('assets/js/plugin/webfont/webfont.min.js') ?>"></script>
@@ -54,7 +53,7 @@
       <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="light">
-          <a href="index.html" class="logo">
+          <a href="<?= base_url("/admin") ?>" class="logo">
             <img
               src="<?= base_url('images/logo-serika.png') ?>"
               alt="navbar brand"
@@ -225,8 +224,8 @@
       <div class="main-header">
         <div class="main-header-logo">
           <!-- Logo Header -->
-          <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
+          <div class="logo-header" data-background-color="light">
+            <a href="<?= base_url("/admin") ?>" class="logo">
               <img
                 src="assets/img/kaiadmin/logo_light.svg"
                 alt="navbar brand"
@@ -245,26 +244,11 @@
               <i class="gg-more-vertical-alt"></i>
             </button>
           </div>
-          <!-- End Logo Header -->
+
         </div>
-        <!-- Navbar Header -->
         <nav
           class="navbar navbar-header navbar-header-transparent navbar-expand-lg border-bottom">
           <div class="container-fluid">
-            <nav
-              class="navbar navbar-header-left navbar-expand-lg navbar-form nav-search p-0 d-none d-lg-flex">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <button type="submit" class="btn btn-search pe-1">
-                    <i class="fa fa-search search-icon"></i>
-                  </button>
-                </div>
-                <input
-                  type="text"
-                  placeholder="Search ..."
-                  class="form-control" />
-              </div>
-            </nav>
 
             <ul class="navbar-nav topbar-nav ms-md-auto align-items-center">
               <li

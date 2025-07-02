@@ -36,35 +36,36 @@
                 </tr>
             </table>
         </div>
-
-        <table class="table table-bordered">
-            <thead>
-                <tr class="text-center">
-                    <th>Jenis</th>
-                    <th>Model</th>
-                    <th>Ukuran</th>
-                    <th>Lengan</th>
-                    <th>Jumlah</th>
-                    <th>Harga</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($keranjang as $item): ?>
-                    <tr>
-                        <td><?= esc($item['jenis']) ?></td>
-                        <td><?= esc($item['model']) ?></td>
-                        <td><?= esc($item['ukuran']) ?></td>
-                        <td><?= esc($item['lengan']) ?></td>
-                        <td><?= esc($item['jumlah']) ?></td>
-                        <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>Jenis</th>
+                        <th>Model</th>
+                        <th>Ukuran</th>
+                        <th>Lengan</th>
+                        <th>Jumlah</th>
+                        <th>Harga</th>
                     </tr>
-                <?php endforeach; ?>
-                <tr>
-                    <th colspan="5" class="text-end">Total</th>
-                    <th>Rp <?= number_format($total, 0, ',', '.') ?></th>
-                </tr>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($keranjang as $item): ?>
+                        <tr>
+                            <td><?= esc($item['jenis']) ?></td>
+                            <td><?= esc($item['model']) ?></td>
+                            <td><?= esc($item['ukuran']) ?></td>
+                            <td><?= esc($item['lengan']) ?></td>
+                            <td><?= esc($item['jumlah']) ?></td>
+                            <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <tr>
+                        <th colspan="5" class="text-end">Total</th>
+                        <th>Rp <?= number_format($total, 0, ',', '.') ?></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
         <div class="text-center mt-4">
             <a id="pay-button" class="btn btn-secondary ms-2">Bayar</a>

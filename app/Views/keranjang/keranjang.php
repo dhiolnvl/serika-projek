@@ -35,6 +35,10 @@
     <div class="card shadow p-4">
         <h2 class="mb-4 text-center">Form Pemesanan Batik</h2>
         <div class="mb-4">
+            <h6>Panduan Ukuran:</h6>
+            <a href="<?= base_url('images/size1.jpg') ?>">Lihat</a>
+        </div>
+        <div class="mb-4">
             <select id="filterKategori" class="form-select">
                 <option value="">-- Kategori Batik --</option>
                 <?php foreach ($kategori as $ktg): ?>
@@ -106,12 +110,6 @@
                 <input type="number" name="jumlah" id="jumlah" class="form-control" min="1" value="1" required>
             </div>
 
-
-            <div class="text-center mb-4">
-                <h6>Panduan Ukuran:</h6>
-                <a href="<?= base_url('images/size1.jpg') ?>">Lihat</a>
-            </div>
-
             <div class="d-grid">
                 <button type="submit" class="btn btn-success">Tambah ke Keranjang</button>
             </div>
@@ -121,40 +119,43 @@
     <?php if ($keranjang): ?>
         <div class="card shadow p-4 mt-5">
             <h4 class="mb-4">Keranjang Belanja</h4>
-            <table class="table table-bordered">
-                <thead>
-                    <tr class="text-center">
-                        <th>Jenis</th>
-                        <th>Model</th>
-                        <th>Ukuran</th>
-                        <th>Lengan</th>
-                        <th>Jumlah</th>
-                        <th>Harga</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $total = 0; ?>
-                    <?php foreach ($keranjang as $item): ?>
-                        <tr>
-                            <td><?= esc($item['jenis']) ?></td>
-                            <td><?= esc($item['model']) ?></td>
-                            <td><?= esc($item['ukuran']) ?></td>
-                            <td><?= esc($item['lengan']) ?></td>
-                            <td><?= esc($item['jumlah']) ?></td>
-                            <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
-                            <td class="text-center">
-                                <a href="<?= base_url("keranjang/hapus/" . $item['id_k']) ?>" class="btn btn-danger btn-sm">Hapus</a>
-                            </td>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Jenis</th>
+                            <th>Model</th>
+                            <th>Ukuran</th>
+                            <th>Lengan</th>
+                            <th>Jumlah</th>
+                            <th>Harga</th>
+                            <th>Aksi</th>
                         </tr>
-                        <?php $total += $item['harga']; ?>
-                    <?php endforeach; ?>
-                    <tr>
-                        <th colspan="5" class="text-end">Total</th>
-                        <th colspan="2">Rp <?= number_format($total, 0, ',', '.') ?></th>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php $total = 0; ?>
+                        <?php foreach ($keranjang as $item): ?>
+                            <tr>
+                                <td><?= esc($item['jenis']) ?></td>
+                                <td><?= esc($item['model']) ?></td>
+                                <td><?= esc($item['ukuran']) ?></td>
+                                <td><?= esc($item['lengan']) ?></td>
+                                <td><?= esc($item['jumlah']) ?></td>
+                                <td>Rp <?= number_format($item['harga'], 0, ',', '.') ?></td>
+                                <td class="text-center">
+                                    <a href="<?= base_url("keranjang/hapus/" . $item['id_k']) ?>" class="btn btn-danger btn-sm">Hapus</a>
+                                </td>
+                            </tr>
+                            <?php $total += $item['harga']; ?>
+                        <?php endforeach; ?>
+                        <tr>
+                            <th colspan="5" class="text-end">Total</th>
+                            <th colspan="2">Rp <?= number_format($total, 0, ',', '.') ?></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <div class="d-grid mt-4">
                 <a href="<?= base_url('/checkout') ?>" class="btn btn-primary">Checkout Sekarang</a>
             </div>

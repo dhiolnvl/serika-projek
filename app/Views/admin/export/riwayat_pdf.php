@@ -50,9 +50,14 @@
         <h2>Laporan Riwayat Transaksi</h2>
     </div>
 
-    <?php if (!empty($tanggal)): ?>
-        <p><strong>Tanggal:</strong> <?= date('d-m-Y', strtotime($tanggal)) ?></p>
+    <?php if (!empty($tanggal_awal) && !empty($tanggal_akhir)): ?>
+        <p><strong>Periode:</strong> <?= date('d-m-Y', strtotime($tanggal_awal)) ?> sampai <?= date('d-m-Y', strtotime($tanggal_akhir)) ?></p>
+    <?php elseif (!empty($tanggal_awal)): ?>
+        <p><strong>Dari Tanggal:</strong> <?= date('d-m-Y', strtotime($tanggal_awal)) ?></p>
+    <?php elseif (!empty($tanggal_akhir)): ?>
+        <p><strong>Sampai Tanggal:</strong> <?= date('d-m-Y', strtotime($tanggal_akhir)) ?></p>
     <?php endif; ?>
+
     <?php if (!empty($kategori)): ?>
         <?php
         $kategoriNama = '';

@@ -20,7 +20,7 @@ class Transaksi extends BaseController
                  pemesanan.nama,
                  pemesanan.tanggal_pemesanan,
                  pemesanan_detail.status,
-                 SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) as total_harga,
+                 SUM(pemesanan_detail.harga) as total_harga,
                  GROUP_CONCAT(CONCAT(
                      pemesanan_detail.jenis, " - ",
                      pemesanan_detail.model, " - ",
@@ -110,35 +110,37 @@ class Transaksi extends BaseController
     public function riwayatTransaksi()
     {
         $db = \Config\Database::connect();
-        $tanggal = $this->request->getGet('tanggal');
-        $kategori = $this->request->getGet('kategori');
+        $tanggal_awal  = $this->request->getGet('tanggal_awal');
+        $tanggal_akhir = $this->request->getGet('tanggal_akhir');
+        $kategori      = $this->request->getGet('kategori');
 
         $builder = $db->table('pemesanan_detail')
             ->select(
                 'pemesanan.id_p,
-                 pemesanan.id_u,
-                 pemesanan.nama,
-                 pemesanan.tanggal_pemesanan,
-                 users.no_hp,
-                 pemesanan_detail.status,
-                 kategori.kategori,
-                 SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) as total_harga,
-                 GROUP_CONCAT(CONCAT(
-                     pemesanan_detail.jenis, " - ",
-                     pemesanan_detail.model, " - ",
-                     pemesanan_detail.ukuran, " - ",
-                     pemesanan_detail.lengan, " - Jumlah: ",
-                     pemesanan_detail.jumlah, " - Rp ",
-                     pemesanan_detail.harga
-                 ) SEPARATOR "|") AS detail_items'
+             pemesanan.id_u,
+             pemesanan.nama,
+             pemesanan.tanggal_pemesanan,
+             users.no_hp,
+             pemesanan_detail.status,
+             kategori.kategori,
+             SUM(pemesanan_detail.harga) as total_harga,
+             GROUP_CONCAT(CONCAT(
+                 pemesanan_detail.jenis, " - ",
+                 pemesanan_detail.model, " - ",
+                 pemesanan_detail.ukuran, " - ",
+                 pemesanan_detail.lengan, " - Jumlah: ",
+                 pemesanan_detail.jumlah, " - Rp ",
+                 pemesanan_detail.harga
+             ) SEPARATOR "|") AS detail_items'
             )
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->join('users', 'users.id_u = pemesanan.id_u')
             ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
             ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
-        if (!empty($tanggal)) {
-            $builder->where("DATE(pemesanan.tanggal_pemesanan)", $tanggal);
+        if (!empty($tanggal_awal) && !empty($tanggal_akhir)) {
+            $builder->where("DATE(pemesanan.tanggal_pemesanan) >=", $tanggal_awal)
+                ->where("DATE(pemesanan.tanggal_pemesanan) <=", $tanggal_akhir);
         }
 
         if (!empty($kategori)) {
@@ -151,13 +153,14 @@ class Transaksi extends BaseController
             ->get();
 
         $totalSelesaiQuery = $db->table('pemesanan_detail')
-            ->select('SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) AS total')
+            ->select('SUM(pemesanan_detail.harga) AS total')
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
             ->where('pemesanan_detail.status', 'Selesai');
 
-        if (!empty($tanggal)) {
-            $totalSelesaiQuery->where("DATE(pemesanan.tanggal_pemesanan)", $tanggal);
+        if (!empty($tanggal_awal) && !empty($tanggal_akhir)) {
+            $totalSelesaiQuery->where("DATE(pemesanan.tanggal_pemesanan) >=", $tanggal_awal)
+                ->where("DATE(pemesanan.tanggal_pemesanan) <=", $tanggal_akhir);
         }
 
         if (!empty($kategori)) {
@@ -172,8 +175,13 @@ class Transaksi extends BaseController
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
-        if (!empty($tanggal)) {
-            $kategoriList->where("DATE(pemesanan.tanggal_pemesanan)", $tanggal);
+        if (!empty($tanggal_awal) && !empty($tanggal_akhir)) {
+            $kategoriList->where("DATE(pemesanan.tanggal_pemesanan) >=", $tanggal_awal)
+                ->where("DATE(pemesanan.tanggal_pemesanan) <=", $tanggal_akhir);
+        }
+
+        if (!empty($kategori)) {
+            $kategoriList->where('kategori.id_ktg', $kategori); // Tambahan ini penting
         }
 
         $kategoriList = $kategoriList
@@ -181,14 +189,17 @@ class Transaksi extends BaseController
             ->get()
             ->getResultArray();
 
+
         return view('admin/tables/riwayatTransaksi', [
-            'transaksi'     => $query->getResultArray(),
-            'totalSelesai'  => $totalSelesai,
-            'tanggal'       => $tanggal,
-            'kategori'      => $kategori,
-            'kategoriList'  => $kategoriList,
+            'transaksi'      => $query->getResultArray(),
+            'totalSelesai'   => $totalSelesai,
+            'tanggal_awal'   => $tanggal_awal,
+            'tanggal_akhir'  => $tanggal_akhir,
+            'kategori'       => $kategori,
+            'kategoriList'   => $kategoriList,
         ]);
     }
+
 
     public function cetakPdf()
     {
@@ -220,7 +231,7 @@ class Transaksi extends BaseController
                  users.no_hp,
                  pemesanan_detail.status,
                  kategori.kategori,
-                 SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) as total_harga,
+                 SUM(pemesanan_detail.harga) as total_harga,
                  GROUP_CONCAT(CONCAT(
                      pemesanan_detail.jenis, " - ",
                      pemesanan_detail.model, " - ",
@@ -249,7 +260,7 @@ class Transaksi extends BaseController
             ->get();
 
         $totalSelesaiQuery = $db->table('pemesanan_detail')
-            ->select('SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) AS total')
+            ->select('SUM(pemesanan_detail.harga) AS total')
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->join('kategori', 'kategori.id_ktg = pemesanan_detail.id_ktg')
             ->where('pemesanan_detail.status', 'Selesai');
@@ -270,14 +281,20 @@ class Transaksi extends BaseController
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->whereIn('pemesanan_detail.status', ['Selesai', 'Dibatalkan']);
 
-        if (!empty($tanggal)) {
-            $kategoriList->where("DATE(pemesanan.tanggal_pemesanan)", $tanggal);
+        if (!empty($tanggal_awal) && !empty($tanggal_akhir)) {
+            $kategoriList->where("DATE(pemesanan.tanggal_pemesanan) >=", $tanggal_awal)
+                ->where("DATE(pemesanan.tanggal_pemesanan) <=", $tanggal_akhir);
+        }
+
+        if (!empty($kategori)) {
+            $kategoriList->where('kategori.id_ktg', $kategori);
         }
 
         $kategoriList = $kategoriList
             ->groupBy('kategori.id_ktg')
             ->get()
             ->getResultArray();
+
 
         return  [
             'transaksi'     => $query->getResultArray(),

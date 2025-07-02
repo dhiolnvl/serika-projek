@@ -27,11 +27,6 @@ class Home extends BaseController
         return view('pages/layanan');
     }
 
-    // public function layanan2(): string
-    // {
-    //     return view('pages/layanan2');
-    // }
-
     public function kontak(): string
     {
         return view('pages/kontak');
@@ -41,6 +36,4 @@ class Home extends BaseController
     {
         return view('pages/unauth');
     }
-
-    
 }

@@ -27,8 +27,12 @@
                             <form method="GET" class="mb-3">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <label for="bulan">Filter Tanggal:</label>
-                                        <input type="date" id="tanggal" name="tanggal" class="form-control" value="<?= esc($_GET['tanggal'] ?? '') ?>">
+                                        <label for="tanggal_awal">Dari Tanggal:</label>
+                                        <input type="date" id="tanggal_awal" name="tanggal_awal" class="form-control" value="<?= esc($_GET['tanggal_awal'] ?? '') ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="tanggal_akhir">Sampai Tanggal:</label>
+                                        <input type="date" id="tanggal_akhir" name="tanggal_akhir" class="form-control" value="<?= esc($_GET['tanggal_akhir'] ?? '') ?>">
                                     </div>
                                     <div class="col-md-3">
                                         <label for="kategori">Filter Kategori:</label>
@@ -41,17 +45,15 @@
                                             <?php endforeach; ?>
                                         </select>
                                     </div>
-                                    <div class="col-md-5 align-self-end">
+                                    <div class="col-md-3 align-self-end">
                                         <button type="submit" class="btn btn-primary">Filter</button>
                                         <a href="<?= base_url('/admin/dataRiwayat') ?>" class="btn btn-secondary">Reset</a>
                                         <a href="<?= base_url('/transaksi/cetakPdf?' . http_build_query($_GET)) ?>" target="_blank" class="btn btn-danger">
                                             <i class="fas fa-file-pdf"></i> Cetak PDF
                                         </a>
                                     </div>
-
                                 </div>
                             </form>
-
                             <table id="riwayat-datatables" class="display table table-striped table-hover">
                                 <thead>
                                     <tr>

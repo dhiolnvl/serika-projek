@@ -117,7 +117,7 @@
             </div>
           </div>
           <div class="card-body">
-            <div class="chart-container" style="min-height: 430px;">
+            <div class="chart-container" style="min-height: 300px;">
               <h6>Grand Total : Rp <?= number_format($totalSelesai, 0, ',', '.'); ?>
               </h6>
               <canvas id="totalPenjualanChart"></canvas>

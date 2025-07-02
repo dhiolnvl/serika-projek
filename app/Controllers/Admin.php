@@ -36,14 +36,14 @@ class Admin extends BaseController
             ->getNumRows();
 
         $totalSelesai = $db->table('pemesanan_detail')
-            ->select('SUM(harga * jumlah) AS total')
+            ->select('SUM(harga) AS total')
             ->where('status', 'Selesai')
             ->get()
             ->getRow()
             ->total;
 
         $totalPerbulan = $db->table('pemesanan_detail')
-            ->select("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') AS bulan, SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) AS total")
+            ->select("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m') AS bulan, SUM(pemesanan_detail.harga) as total")
             ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
             ->whereIn('pemesanan_detail.status', ['Selesai'])
             ->groupBy("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m')")
@@ -58,7 +58,7 @@ class Admin extends BaseController
                  pemesanan.nama,
                  users.no_hp,
                  pemesanan_detail.status,
-                 SUM(pemesanan_detail.harga * pemesanan_detail.jumlah) as total_harga,
+                 SUM(pemesanan_detail.harga) as total_harga,
                  GROUP_CONCAT(CONCAT(
                      pemesanan_detail.jenis, " - ",
                      pemesanan_detail.model, " - ",
@@ -101,7 +101,6 @@ class Admin extends BaseController
 
     public function inputAdmin()
     {
-        // $id_user = session()->get('id_a');
 
         return view('admin/forms/inputAdmin');
     }

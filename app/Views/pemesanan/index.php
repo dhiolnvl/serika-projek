@@ -34,30 +34,32 @@
                         </tr>
                     </table>
                     <h6>Detail Pemesanan:</h6>
-                    <table class="table table-bordered text-center">
-                        <thead>
-                            <tr>
-                                <th>Jenis</th>
-                                <th>Model</th>
-                                <th>Ukuran</th>
-                                <th>Lengan</th>
-                                <th>Jumlah</th>
-                                <th>Harga</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($item['detail'] as $d): ?>
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center">
+                            <thead>
                                 <tr>
-                                    <td><?= esc($d['jenis']) ?></td>
-                                    <td><?= esc($d['model']) ?></td>
-                                    <td><?= esc($d['ukuran']) ?></td>
-                                    <td><?= esc($d['lengan']) ?></td>
-                                    <td><?= esc($d['jumlah']) ?></td>
-                                    <td>Rp <?= number_format($d['harga'], 0, ',', '.') ?></td>
+                                    <th>Jenis</th>
+                                    <th>Model</th>
+                                    <th>Ukuran</th>
+                                    <th>Lengan</th>
+                                    <th>Jumlah</th>
+                                    <th>Harga</th>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($item['detail'] as $d): ?>
+                                    <tr>
+                                        <td><?= esc($d['jenis']) ?></td>
+                                        <td><?= esc($d['model']) ?></td>
+                                        <td><?= esc($d['ukuran']) ?></td>
+                                        <td><?= esc($d['lengan']) ?></td>
+                                        <td><?= esc($d['jumlah']) ?></td>
+                                        <td>Rp <?= number_format($d['harga'], 0, ',', '.') ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
                     <?php
                     $no_hp_toko = '62895379119628';
                     $pesan = "Halo, saya ingin konfirmasi pesanan dengan ID: " . $item['id_p'] .
