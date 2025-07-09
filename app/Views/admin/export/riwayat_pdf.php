@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Laporan Riwayat Transaksi</title>
+    <title>Laporan Transaksi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -45,9 +45,8 @@
 
 <body>
     <div class="header">
-        <img src="<?= FCPATH . 'logo.png' ?>" alt="Logo">
         <h1>BATIK SERIKA</h1>
-        <h2>Laporan Riwayat Transaksi</h2>
+        <h2>Laporan Transaksi</h2>
     </div>
 
     <?php if (!empty($tanggal_awal) && !empty($tanggal_akhir)): ?>

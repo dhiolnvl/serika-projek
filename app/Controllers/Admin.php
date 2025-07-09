@@ -18,7 +18,7 @@ class Admin extends BaseController
         $now = time();
 
         $onlineUser = $db->table('online_users')
-            ->where('last_activity >=', $now - 300)
+            ->where('last_activity >=', $now - 600)
             ->countAllResults();
 
         $pesananBaru = $db->table('pemesanan_detail')
@@ -50,6 +50,16 @@ class Admin extends BaseController
             ->orderBy("DATE_FORMAT(pemesanan.tanggal_pemesanan, '%Y-%m')")
             ->get()
             ->getResultArray();
+
+        $totalPerhari = $db->table('pemesanan_detail')
+            ->select("DATE(pemesanan.tanggal_pemesanan) AS tanggal, SUM(pemesanan_detail.harga) as total")
+            ->join('pemesanan', 'pemesanan.id_p = pemesanan_detail.id_p')
+            ->whereIn('pemesanan_detail.status', ['Selesai'])
+            ->groupBy("DATE(pemesanan.tanggal_pemesanan)")
+            ->orderBy("DATE(pemesanan.tanggal_pemesanan)")
+            ->get()
+            ->getResultArray();
+
 
         $builder = $db->table('pemesanan_detail')
             ->select(
@@ -94,6 +104,7 @@ class Admin extends BaseController
             'pesananSelesai' => $pesananSelesai,
             'totalSelesai'   => $totalSelesai,
             'totalPerbulan'  => $totalPerbulan,
+            'totalPerhari'  => $totalPerhari,
             'kategoriList'   => $kategoriList,
             'onlineUser'     => $onlineUser,
         ], $data));

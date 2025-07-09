@@ -217,25 +217,19 @@
     <!-- GRAFIK PENJUALAN -->
     <script src="<?= base_url('assets/js/plugin/datatables/datatables.min.js') ?>"></script>
     <script>
-      $(document).ready(function() {
-        $("#riwayat-datatables").DataTable();
-      });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
       const totalPenjualanChart = new Chart(document.getElementById('totalPenjualanChart'), {
         type: 'line',
         data: {
-          labels: <?= json_encode(array_column($totalPerbulan, 'bulan')) ?>,
+          labels: <?= json_encode(array_column($totalPerhari, 'tanggal')) ?>,
           datasets: [{
-            label: 'Total Penjualan Perbulan (Rp)',
-            data: <?= json_encode(array_map(fn($row) => (int)$row['total'], $totalPerbulan)) ?>,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: '#f3545d',
+            label: 'Total Penjualan Perhari (Rp)',
+            data: <?= json_encode(array_map(fn($row) => (int)$row['total'], $totalPerhari)) ?>,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: '#36a2eb',
             borderWidth: 2,
             tension: 0.4,
             fill: true,
-            pointBackgroundColor: '#f3545d'
+            pointBackgroundColor: '#36a2eb'
           }]
         },
         options: {
@@ -251,6 +245,18 @@
               ticks: {
                 callback: function(value) {
                   return 'Rp ' + new Intl.NumberFormat('id-ID').format(value);
+                }
+              }
+            },
+            x: {
+              ticks: {
+                callback: function(value, index, ticks) {
+                  const label = this.getLabelForValue(value);
+                  return new Date(label).toLocaleDateString('id-ID', {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short'
+                  });
                 }
               }
             }
