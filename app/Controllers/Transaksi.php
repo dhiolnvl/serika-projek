@@ -200,7 +200,6 @@ class Transaksi extends BaseController
         ]);
     }
 
-
     public function cetakPdf()
     {
         $bulan = $this->request->getGet('bulan');
@@ -216,7 +215,7 @@ class Transaksi extends BaseController
         $dompdf->stream("riwayat-transaksi.pdf");
     }
 
-    private function getRiwayatData($bulan, $kategori)
+    private function getRiwayatData($tanggal, $kategori)
     {
         $db = \Config\Database::connect();
         $tanggal = $this->request->getGet('tanggal');

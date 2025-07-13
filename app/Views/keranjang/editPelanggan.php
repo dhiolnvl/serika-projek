@@ -1,4 +1,4 @@
-<?= $this->extend('/admin/index'); ?>
+<?= $this->extend('/index'); ?>
 <?= $this->section('content') ?>
 
 <?php if (session()->getFlashdata('success')): ?>
@@ -20,25 +20,6 @@
         <div class="page-inner">
             <div class="page-header">
                 <h3 class="fw-bold mb-3">Edit Pelanggan</h3>
-                <ul class="breadcrumbs mb-3">
-                    <li class="nav-home">
-                        <a href="">
-                            <i class="icon-home"></i>
-                        </a>
-                    </li>
-                    <li class="separator">
-                        <i class="icon-arrow-right"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Data Pelanggan</a>
-                    </li>
-                    <li class="separator">
-                        <i class="icon-arrow-right"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Input Pelanggan</a>
-                    </li>
-                </ul>
             </div>
 
             <div class="row">

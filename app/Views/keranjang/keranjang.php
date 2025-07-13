@@ -20,17 +20,31 @@
         <h3>Selamat datang, <?= session()->get('username'); ?>!</h3>
     </div>
 
-    <div class="mb-4 text-end">
-        <a href="<?= base_url('/logout') ?>" class="btn btn-outline-danger">Logout</a>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light rounded shadow-sm mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold">Menu</a>
 
-    <div class="mb-4 text-end">
-        <a href="<?= base_url('/pemesanan') ?>" class="btn btn-outline-danger">Cek Pemesanan</a>
-    </div>
+    <!-- Toggle button for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarUserMenu" aria-controls="navbarUserMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="mb-4 text-end">
-        <a href="<?= base_url('/keranjang/editPelanggan/' . $user['id_u']) ?>" class="btn btn-outline-danger">Edit Profil</a>
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarUserMenu">
+      <ul class="navbar-nav flex-lg-row flex-column gap-2 mt-3 mt-lg-0">
+        <li class="nav-item">
+          <a class="btn btn-outline-primary w-100" href="<?= base_url('/keranjang/editPelanggan/' . $user['id_u']) ?>">Edit Profil</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-secondary w-100" href="<?= base_url('/pemesanan') ?>">Cek Pemesanan</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-danger w-100" href="<?= base_url('/logout') ?>">Logout</a>
+        </li>
+      </ul>
     </div>
+  </div>
+</nav>
 
     <div class="card shadow p-4">
         <h2 class="mb-4 text-center">Form Pemesanan Batik</h2>
